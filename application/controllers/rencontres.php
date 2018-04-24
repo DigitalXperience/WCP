@@ -1,12 +1,12 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
  
-class Equipes extends CI_Controller{
+class Rencontres extends CI_Controller{
 	
 	function __construct()
 	{
 		parent::__construct();
 		$this->load->model('user','',TRUE);
-		$this->load->model('equipes_model','equipes');
+		$this->load->model('rencontres_model','rencontres');
 		//$this->load->model('accounts','', TRUE);
 		//$this->load->model('log_model','logs');
 	}
@@ -21,9 +21,9 @@ class Equipes extends CI_Controller{
 		{
 			$session_data = $this->session->userdata('logged_in');
 			$data['name'] = $this->user->getInfo($session_data['id']);
-			$data['title'] = "Liste des équipes";
-            $data['liste'] = $this->equipes->getList();
-			$this->load->view('equipe_list', $data);
+			$data['title'] = "Liste des rencontres";
+            $data['liste'] = $this->rencontres->getList();
+			$this->load->view('rencontre_list', $data);
 		}
 		else
 		{

@@ -1,10 +1,10 @@
 <?php
-Class Equipes_model extends CI_Model
+Class Rencontres_model extends CI_Model
 {
 
     public function getList($clause=null)
 	{
-		$query = $this->db->query('SELECT * FROM equipes;');
+		$query = $this->db->query('SELECT * FROM rencontres;');
 		$row = $query->result();
 		if (isset($row))
 		{

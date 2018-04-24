@@ -24,8 +24,12 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Nom</th>
-                    <th>Drapeau</th>
+                    <th>Equipe 1</th>
+                    <th>Equipe 2</th>
+                    <th>Date</th>
+                    <th>Score eq.1</th>
+                    <th>Score eq.2</th>
+                    <th>Mise en avant?</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -33,8 +37,12 @@
                             foreach ($liste as $row){
                                 echo '<tr id="row-'.$row->id.'">
                                         <td>'.$row->id.'</td>
-                                        <td>'.$row->name.'</td>
-                                        <td><img src=\''.$row->flag.'\' /></td>
+                                        <td>'.$row->equipe_id1.'</td>
+                                        <td>'.$row->equipe_id2.'</td>
+                                        <td>'.$row->date_heure.'</td>
+                                        <td>'.$row->score_eq1.'</td>
+                                        <td>'.$row->score_eq2.'</td>
+                                        <td>'.($row->en_avant == '0' ? 'Non' : 'Oui') .'</td>
                                       </tr>';
                             }
                     } ?>
@@ -42,8 +50,12 @@
                 <tfoot>
                   <tr>
                     <th>#</th>
-                    <th>Nom</th>
-                    <th>Drapeau</th>
+                    <th>Equipe 1</th>
+                    <th>Equipe 2</th>
+                    <th>Date</th>
+                    <th>Score eq.1</th>
+                    <th>Score eq.2</th>
+                    <th>Mise en avant?</th>
                   </tr>
                 </tfoot>
               </table>

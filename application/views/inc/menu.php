@@ -72,8 +72,8 @@
                 <span>Gestion des équipes</span>
               </a>
               <ul class="nav-sub">
-                <li class="nav-item"><a href="accordion.html" class="nav-link">Ajouter une équipe</a></li>
-                <li class="nav-item"><a href="alerts.html" class="nav-link">Lister les équipes</a></li>
+                <li class="nav-item"><a href="equipes/add" class="nav-link">Ajouter une équipe</a></li>
+                <li class="nav-item"><a href="equipes/list" class="nav-link">Lister les équipes</a></li>
               </ul>
             </li><!-- nav-item -->
             <li class="nav-item">
@@ -82,8 +82,8 @@
                 <span>Gestion des rencontres</span>
               </a>
               <ul class="nav-sub">
-                <li class="nav-item"><a href="chart-morris.html" class="nav-link">Ajouter une rencontre</a></li>
-                <li class="nav-item"><a href="chart-flot.html" class="nav-link">Lister les rencontres</a></li>
+                <li class="nav-item"><a href="rencontres/add" class="nav-link">Ajouter une rencontre</a></li>
+                <li class="nav-item"><a href="rencontres/list" class="nav-link">Lister les rencontres</a></li>
               </ul>
             </li><!-- nav-item -->
          </ul>

@@ -8,7 +8,7 @@ Class Equipes_model extends CI_Model
 	
 	public function getInfo($id)
 	{
-		$query = $this->db->query("SELECT * FROM juice_info WHERE id = '$id' LIMIT 1;");
+		$query = $this->db->query("SELECT * FROM equipes WHERE id = '$id' LIMIT 1;");
 		$row = $query->row();
 		if (isset($row)) {
 			return $row;

@@ -1,5 +1,5 @@
 <?php
-Class Equipes extends CI_Model
+Class Equipes_model extends CI_Model
 {
 	public function getTotal()
 	{

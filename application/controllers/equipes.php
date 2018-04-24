@@ -6,9 +6,9 @@ class Equipes extends CI_Controller{
 	{
 		parent::__construct();
 		$this->load->model('user','',TRUE);
-		$this->load->model('equipe','',TRUE);
-		$this->load->model('accounts','', TRUE);
-		$this->load->model('log_model','logs');
+		$this->load->model('equipes_model','equipes');
+		//$this->load->model('accounts','', TRUE);
+		//$this->load->model('log_model','logs');
 	}
 	
 	public function index()
@@ -28,7 +28,7 @@ class Equipes extends CI_Controller{
 		}
 	}
 
-	public function list() {
+	public function liste() {
 		if($this->session->userdata('logged_in'))
 		{
 			$session_data = $this->session->userdata('logged_in');

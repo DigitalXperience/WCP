@@ -73,7 +73,7 @@
               </a>
               <ul class="nav-sub">
                 <li class="nav-item"><a href="equipes/add" class="nav-link">Ajouter une équipe</a></li>
-                <li class="nav-item"><a href="equipes/list" class="nav-link">Lister les équipes</a></li>
+                <li class="nav-item"><a href="equipes/liste" class="nav-link">Lister les équipes</a></li>
               </ul>
             </li><!-- nav-item -->
             <li class="nav-item">

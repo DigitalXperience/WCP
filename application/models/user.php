@@ -27,7 +27,7 @@ Class User extends CI_Model
 	
 	public function getInfo($id)
 	{
-		$query = $this->db->query("SELECT * FROM user_info WHERE id_user = '$id' LIMIT 1;");
+		$query = $this->db->query("SELECT * FROM users WHERE id = '$id' LIMIT 1;");
 		$row = $query->row();
 		if (isset($row)) {
 			return $row;

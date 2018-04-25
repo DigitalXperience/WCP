@@ -4,7 +4,7 @@ Class Equipes_model extends CI_Model
 
     public function getList($clause=null)
 	{
-		$query = $this->db->query('SELECT * FROM equipes;');
+		$query = $this->db->query('SELECT * FROM '. TABLE_EQUIPES .';');
 		$row = $query->result();
 		if (isset($row))
 		{

@@ -338,10 +338,10 @@
               <tbody>
                 <?php if($liste){
                             foreach ($liste as $row){
-                                echo '<tr id="row-'.$row->id.'">
-                                        <td>'.$row->id.'</td>
-                                        <td>'.$row->equipe_id1.'</td>
-                                        <td>'.$row->equipe_id2.'</td>
+                                echo '<tr id="row-'.$row->id_rencontre.'">
+                                        <td>'.$row->id_rencontre.'</td>
+                                        <td>'.$row->equipe_1.'</td>
+                                        <td>'.$row->equipe_2.'</td>
                                         <td>'.$row->date_heure.'</td>
                                         <td>'.$row->score_eq1.'</td>
                                         <td>'.$row->score_eq2.'</td>

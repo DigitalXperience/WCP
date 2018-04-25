@@ -83,7 +83,7 @@
               </a>
               <ul class="nav-sub">
                 <li class="nav-item"><a href="rencontres/add" class="nav-link">Ajouter une rencontre</a></li>
-                <li class="nav-item"><a href="rencontres/liste" class="nav-link">Lister les rencontres</a></li>
+                <li class="nav-item"><a href="<?php echo base_url(); ?>index.php/rencontres/liste" class="nav-link">Lister les rencontres</a></li>
               </ul>
             </li><!-- nav-item -->
          </ul>

@@ -23,6 +23,16 @@ Class Rencontres_model extends CI_Model
 		}
 		return false;
 	}
+
+	public function newRencontre($tab) {
+		return $this->db->insert(TABLE_RENCONTRES, $tab);
+	}
+
+	public function updateRencontre($tab) {
+		$this->load->database();
+        $this->db->where('id', $tab['id']);
+        return $this->db->update(TABLE_RENCONTRES, $tab);
+	}
 	
 }
 ?>

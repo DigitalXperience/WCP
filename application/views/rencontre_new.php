@@ -54,7 +54,9 @@ Nouvelle rencontre
                            <div class="col-md-6">
                                 <div class="form-group">
                                   <label>Date et Heure</label>
-                                  <input type="text" class="form-control" value="<?php if(isset($current)) echo $current->date_heure; ?>" name="date_heure" placeholder="Entrez sa date et heure" required>
+                                  <span class="input-group-addon"><i class="icon ion-calendar tx-16 lh-0 op-6"></i></span>
+  								<input type="text" class="form-control fc-datepicker" placeholder="YYYY-MM-DD hh:mm:ss" name="date_heure" value="<?php if(isset($current)) echo $current->date_heure; ?>" required>
+
                                 </div>
                                 
                            </div>

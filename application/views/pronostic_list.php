@@ -341,6 +341,7 @@
                 <?php if($liste){
                             foreach ($liste as $row){
                                 echo '<tr id="row-'.$row->id.'">
+                                        <td>'.$row->id.'</td>
                                         <td>'.$row->rencontre_date_heure.'</td>
                                         <td>'.$row->equipe_1.'</td>
                                         <td>'.$row->equipe_2.'</td>

@@ -12423,21 +12423,23 @@ textarea.parsley-success:focus {
 .am-signin-wrapper,
 .am-signup-wrapper {
   min-height: 100vh;
-  background-color: #32415A;
+  background:#000 url(../img/bg.jpg) center bottom no-repeat;
+  /*background-color: #32415A;
   background-image: linear-gradient(to right, #32415A 0%, #202939 100%);
-  background-repeat: repeat-x;
+  background-repeat: repeat-x;*/
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 25px 0;
+  background-size : cover;
 }
 
 .am-signin-box > .row > div:first-child,
 .am-signup-box > .row > div:first-child {
   text-align: center;
   padding: 40px;
-  background-color: #FB9337;
-  background-image: linear-gradient(to bottom, #FB9337 0%, #fb861e 100%);
+  background-color: #FF1724;
+  background-image: linear-gradient(to bottom, #E53245 0%, #FF1724 100%);
   background-repeat: repeat-x;
   color: #fff;
   display: flex;
@@ -12485,8 +12487,8 @@ textarea.parsley-success:focus {
 .am-signup-box .btn,
 .am-signup-box .sp-container button,
 .sp-container .am-signup-box button {
-  background-color: #32415A;
-  color: rgba(255, 255, 255, 0.8);
+  background-color: #FF1724;
+  color: rgba(255, 255, 255, 1);
 }
 .am-signin-box .btn:hover, .am-signin-box .sp-container button:hover, .sp-container .am-signin-box button:hover, .am-signin-box .btn:focus, .am-signin-box .sp-container button:focus, .sp-container .am-signin-box button:focus,
 .am-signup-box .btn:hover,
@@ -12495,7 +12497,7 @@ textarea.parsley-success:focus {
 .am-signup-box .btn:focus,
 .am-signup-box .sp-container button:focus,
 .sp-container .am-signup-box button:focus {
-  background-color: #29354a;
+  background-color: #868e96;
   color: #fff;
 }
 

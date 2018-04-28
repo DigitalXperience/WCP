@@ -55,23 +55,26 @@
               <p>Vous n'avez pas de comptes ? <br> <a href="#"></a></p>
             </div>
           </div>
+		  
           <div class="col-lg-7">
-            <h5 id="mtsg" class="tx-gray-800 mg-b-25">Connexion</h5>
+            <form class=""><h5 id="mtsg" class="tx-gray-800 mg-b-25">Connexion</h5>
 
             <div class="form-group">
               <label class="form-control-label">Nom d'utilisateur :</label>
-              <input type="text" id="username" name="email" class="form-control" placeholder="Entrer votre nom d'utilisateur">
+              <input type="text" id="username" name="email" autocomplete="false" class="form-control" placeholder="Entrer votre nom d'utilisateur">
             </div><!-- form-group -->
 
             <div class="form-group">
               <label class="form-control-label">Mot de passe :</label>
-              <input type="password" id="password" class="form-control" placeholder="Entrer votre mot de passe">
+              <input type="password" id="password" autocomplete="false" class="form-control" placeholder="Entrer votre mot de passe">
             </div><!-- form-group -->
 
             <div class="form-group mg-b-20"><a href="">Reinitialiser mot de passe</a></div>
 
             <button type="submit" id="login-button" class="btn btn-block">Se logger</button>
-          </div><!-- col-7 -->
+			</form>
+          </div>
+		  <!-- col-7 -->
         </div><!-- row -->
         <p class="tx-center tx-white-5 tx-12 mg-t-15">Copyright &copy; 2018. All Rights Reserved</p>
       </div><!-- signin-box -->
@@ -85,7 +88,7 @@
     <script src="<?php echo base_url(); ?>assets/js/amanda.js"></script>
 	<script>
 $("#username, #password").keyup(function(event){
-	$('#mtsg').html('Staff Canteen Administration');
+	$('#mtsg').html('33 export administration');
 });
  $("#login-button").click(function(event){
 	event.preventDefault();
@@ -93,7 +96,8 @@ $("#username, #password").keyup(function(event){
 	var login = $("#username").val();
 	
 	if(password != '' && '' != login) {
-		
+		$('#password').css('border-color', '#adb5bd');
+		$('#username').css('border-color', '#adb5bd');
 		$('form').fadeOut(500);
 		$('.wrapper').addClass('form-success');
 		$.post( "verifylogin", { username: login, password: password }).done(function( data ) {
@@ -104,20 +108,25 @@ $("#username, #password").keyup(function(event){
 					return false;
 				}, 2000);
 			} else {
+				$('#mtsg').html('Connexion impossible! Veuillez reessayer');
+				$('#mtsg').addClass('error');
 				$('form').fadeIn(500);
 				$('.wrapper').removeClass('form-success');
 			}
 		  });
 		
 	} else {
+		$('#password').css('border-color', '#adb5bd');
+		$('#username').css('border-color', '#adb5bd');
 		if(login == '') {
 			$('#mtsg').html('Login manquant...');
 			$('#mtsg').addClass('error');
+			$('#username').css('border-color', 'red');
 			$('#username').addClass('error');
-		}
-		if(password == '') {
+		} else if(password == '') {
 			$('#mtsg').html('Mot de passe manquant...');
 			$('#mtsg').addClass('error');
+			$('#password').css('border-color', 'red');
 			$('#password').addClass('error');
 		}
 	}

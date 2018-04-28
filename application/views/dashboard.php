@@ -229,26 +229,26 @@
                         <img src="<?php echo base_url(); ?>assets/img/img1.jpg" class="wd-36 rounded-circle" alt="Image">
                       </td>
                       <td>
-                        <a href="" class="tx-inverse tx-14 tx-medium d-block">Mark K. Peters</a>
-                        <span class="tx-11 d-block">TRANSID: 1234567890</span>
+                        <a href="" class="tx-inverse tx-14 tx-medium d-block">Patient Assontia</a>
+                        <span class="tx-11 d-block">Mode : Vainqueur</span>
                       </td>
                       <td class="tx-12">
-                        <span class="square-8 bg-success mg-r-5 rounded-circle"></span> Email verified
+                        <span class="square-8 bg-success mg-r-5 rounded-circle"></span> Allemagne - Bresil
                       </td>
-                      <td>Just Now</td>
+                      <td>A l'instant</td>
                     </tr>
                     <tr>
                       <td class="pd-l-20 tx-center">
                         <img src="<?php echo base_url(); ?>assets/img/img2.jpg" class="wd-36 rounded-circle" alt="Image">
                       </td>
                       <td>
-                        <a href="" class="tx-inverse tx-14 tx-medium d-block">Karmen F. Brown</a>
-                        <span class="tx-11 d-block">TRANSID: 1234567890</span>
+                        <a href="" class="tx-inverse tx-14 tx-medium d-block">Albin Tchopba</a>
+                        <span class="tx-11 d-block">Mode : Score</span>
                       </td>
                       <td class="tx-12">
-                        <span class="square-8 bg-warning mg-r-5 rounded-circle"></span> Pending verification
+                        <span class="square-8 bg-warning mg-r-5 rounded-circle"></span> Allemagne - Brésil
                       </td>
-                      <td>Apr 21, 2017 8:34am</td>
+                      <td>25 Mars 2017 à 8:34</td>
                     </tr>
                     <tr>
                       <td class="pd-l-20 tx-center">

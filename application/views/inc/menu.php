@@ -52,7 +52,7 @@
   
   <ul class="nav am-sideleft-menu">
             <li class="nav-item">
-              <a href="index.html" class="nav-link">
+              <a href="<?php echo base_url(); ?>index.php/dashboard" class="nav-link">
                 <i class="icon ion-ios-home-outline"></i>
                 <span>Tableau de Bord</span>
               </a>

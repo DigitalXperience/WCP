@@ -86,4 +86,23 @@
                 <li class="nav-item"><a href="<?php echo base_url(); ?>index.php/rencontres/liste" class="nav-link">Lister les rencontres</a></li>
               </ul>
             </li><!-- nav-item -->
+            <li class="nav-item">
+              <a href="" class="nav-link with-sub">
+                <i class="icon ion-ios-analytics-outline"></i>
+                <span>Gestion des utilisateurs</span>
+              </a>
+              <ul class="nav-sub">
+                <li class="nav-item"><a href="<?php echo base_url(); ?>index.php/utilisateurs/liste" class="nav-link">Lister les utilisateurs</a></li>
+              </ul>
+            </li><!-- nav-item -->
+            </li><!-- nav-item -->
+            <li class="nav-item">
+              <a href="" class="nav-link with-sub">
+                <i class="icon ion-ios-analytics-outline"></i>
+                <span>Gestion des pronostics</span>
+              </a>
+              <ul class="nav-sub">
+                <li class="nav-item"><a href="<?php echo base_url(); ?>index.php/pronostics/liste" class="nav-link">Lister les pronostics</a></li>
+              </ul>
+            </li><!-- nav-item -->
          </ul>

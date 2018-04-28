@@ -1,4 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,15 +13,15 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Amanda">
     <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
-    <meta name="twitter:image" content="http:/themepixels.me/amanda/img/amanda-social.png">
+    <meta name="twitter:image" content="http://themepixels.me/amanda/img/amanda-social.png">
 
     <!-- Facebook -->
-    <meta property="og:url" content="http:/themepixels.me/amanda">
+    <meta property="og:url" content="http://themepixels.me/amanda">
     <meta property="og:title" content="Bracket">
     <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
 
-    <meta property="og:image" content="http:/themepixels.me/amanda/img/amanda-social.png">
-    <meta property="og:image:secure_url" content="http:/themepixels.me/amanda/img/amanda-social.png">
+    <meta property="og:image" content="http://themepixels.me/amanda/img/amanda-social.png">
+    <meta property="og:image:secure_url" content="http://themepixels.me/amanda/img/amanda-social.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="600">
@@ -32,24 +33,14 @@
 
     <title><?php echo $title; ?></title>
 
-    <!--
-  	<script type="text/javascript" src="https:/cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  	<script type="text/javascript" src="https:/cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
-  	<script type="text/javascript" src="https:/cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
-  	<script type="text/javascript" src="https:/cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-
-  	<link rel="stylesheet" href="https:/cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js" />
-  	<link rel="stylesheet" href="https:/cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" />
-	-->
-
     <!-- vendor css -->
-    <link href="<?php echo base_url(); ?>assets/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href=".<?php echo base_url(); ?>assets/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/Ionicons/css/ionicons.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/jquery-toggles/toggles-full.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/highlightjs/github.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/lib/datatables/jquery.dataTables.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/select2/css/select2.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/lib/spectrum/spectrum.css" rel="stylesheet">
 
     <!-- Amanda CSS -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/amanda.css">
@@ -160,8 +151,8 @@
 
       <div class="tab-content">
         <div id="mainMenu" class="tab-pane active">
-          <?php include ('inc/menu.php'); ?>
-		 </div><!-- #mainMenu -->
+           <?php include ('inc/menu.php'); ?>
+		</div><!-- #mainMenu -->
         <div id="emailMenu" class="tab-pane">
           <div class="pd-x-20 pd-y-10">
             <a href="" class="btn btn-orange btn-block btn-compose">Compose Email</a>
@@ -315,7 +306,7 @@
     </div><!-- am-sideleft -->
 
     <div class="am-pagetitle">
-      <h5 class="am-title">Form Elements</h5>
+      <h5 class="am-title"><?php echo $title; ?></h5>
       <form id="searchBar" class="search-bar" action="index.html">
         <div class="form-control-wrapper">
           <input type="search" class="form-control bd-0" placeholder="Search...">
@@ -326,171 +317,98 @@
 
     <div class="am-mainpanel">
       <div class="am-pagebody">
-Nouvelle rencontre
 
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
+        <div class="card pd-20 pd-sm-40">
+          <h6 class="card-body-title">Basic Responsive DataTable</h6>
+          <p class="mg-b-20 mg-sm-b-30">Searching, ordering and paging goodness will be immediately added to the table, as shown in this example.</p>
 
-        <!-- Main content -->
-        <section class="content">
-            <?php if(isset($alert)) echo $alert; ?>
-			<!-- general form elements -->
-              <div class="box box-primary">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Entrez les informations de la rencontre</h3>
-                </div><!-- /.box-header -->
-                <!-- form start -->
-                <form role="form" action="<?php echo base_url().'index.php/rencontres/ajouter'; ?>" method="post">
-                  <div class="box-body">
-                      <div class="row">
-                          <div class="col-md-6">
-                                <div class="form-group">
-                                  <label>Equipe 1 </label>
-                                  <select class="form-control" name="equipe_id1" required>
-                                    <option value="">Sélectionnez l'équipe 1</option>
-                                    <?php foreach ($lstEquipes as $equipe) { 
-                         				echo "<option value='".$equipe->id."'>".$equipe->name."</option>";           	
-                                    } ?>
-                                  </select>
-                                </div>
-                                
-                           </div>
-                           <div class="col-md-6">
-                                <div class="form-group">
-                                  <label>Equipe 2 </label>
-                                  <select class="form-control" name="equipe_id2" required>
-                                    <option value="">Sélectionnez l'équipe 2</option>
-                                    <?php foreach ($lstEquipes as $equipe) { 
-                         				echo "<option value='".$equipe->id."'>".$equipe->name."</option>";           	
-                                    } ?>
-                                  </select>
-                                </div>
-                                
-                           </div>
-                           <div class="col-md-6">
-                                <div class="form-group">
-                                  <label>Date et Heure</label>
-                                  <!-- <span class="input-group-addon"><i class="icon ion-calendar tx-16 lh-0 op-6"></i></span>
-  								<input type="text" class="form-control fc-datepicker" placeholder="YYYY-MM-DD hh:mm:ss" name="date_heure" value="<?php //if(isset($current)) echo $current->date_heure; ?>" required>
-									-->
-									<div class='input-group date' id='datetimepicker5'>
-					                    <input type='text' class="form-control" />
-					                    <span class="input-group-addon">
-					                        <span class="glyphicon glyphicon-calendar"></span>
-					                    </span>
-					                </div>
-                                </div>
-                                
-                           </div>
-                           <div class="col-md-6">
-                                <div class="form-group">
-                                  <label>Mis en avant</label>
-                                  <input type="radio" class="form-control" value="1" name="en_avant" <?php if (isset($current) && $current->en_avant == "1") { echo "checked"; } ?> /> Oui  
-                                  <input type="radio" class="form-control" value="0" name="en_avant" <?php if (isset($current) && $current->en_avant == "0") { echo "checked"; } ?> /> Non  
-                                </div>
-                                
-                           </div>
+          <div class="table-wrapper">
+            <table id="datatable1" class="table display responsive nowrap">
+              <thead>
+                <tr>
+                  <th>#</th>
+                    <th>Rencontre</th>
+                    <th>Equipe 1</th>
+                    <th>Equipe 2</th>
+                    <th>Score eq.1</th>
+                    <th>Score eq.2</th>
+                    <th>Utilisateur</th>
+                    <th>Vainqueur</th>
+                    <th>Date/Heure prono</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php if($liste){
+                            foreach ($liste as $row){
+                                echo '<tr id="row-'.$row->id.'">
+                                        <td>'.$row->rencontre_date_heure.'</td>
+                                        <td>'.$row->equipe_1.'</td>
+                                        <td>'.$row->equipe_2.'</td>
+                                        <td>'.$row->score_eq1.'</td>
+                                        <td>'.$row->score_eq2.'</td>
+                                        <td>'.$row->utilisateur_nom.'</td>
+                                        <td>'.$row->vainqueur.'</td>
+                                        <td>'.$row->date_heure.'</td>
+                                      </tr>';
+                            }
+                    } ?>
+                
+              </tbody>
+            </table>
+          </div><!-- table-wrapper -->
+        </div><!-- card -->
 
-                       </div>
-                  </div><!-- /.box-body -->
+        <p class="tx-11 tx-uppercase tx-spacing-2 mg-t-40 mg-b-10 tx-gray-600">Javascript Code</p>
+        <pre><code class="javascript pd-20">$('#datatable1').DataTable({
+responsive: true,
+language: {
+  searchPlaceholder: 'Search...',
+  sSearch: '',
+  lengthMenu: '_MENU_ items/page',
+}
+});</code></pre>
 
-                  <div class="box-footer">
-                    <?php if(isset($current)) echo '<input type="hidden" name="id" value="'.$current->id.'">'; ?>
-                    <button type="submit" class="btn btn-primary">Enregistrer</button> <button type="reset" class="btn btn-default">Annuler</button>
-                  </div>
-                </form>
-              </div><!-- /.box -->
-         
-		 
-		 
-        </section><!-- /.content -->
-      </div><!-- /.content-wrapper -->
-
-      <script type="text/javascript">
-           /* $(function () {
-                $('#datetimepicker5').datetimepicker({
-                    defaultDate: "11/1/2013",
-                    disabledDates: [
-                        moment("12/25/2013"),
-                        new Date(2013, 11 - 1, 21),
-                        "11/22/2013 00:53"
-                    ]
-                });
-            });*/
-        </script>
-      
-<div class="am-footer">
-        <span>Copyright &copy;. All Rights Reserved. Amanda Responsive Bootstrap 4 Admin Dashboard.</span>
-        <span>Created by: ThemePixels, Inc.</span>
+      </div><!-- am-pagebody -->
+      <div class="am-footer">
+        <span>Copyright &copy;. All Rights Reserved. 33 Export Dashboard.</span>
+        <span>Created by: Digital Experience, Sarl.</span>
       </div><!-- am-footer -->
     </div><!-- am-mainpanel -->
 
     <script src="<?php echo base_url(); ?>assets/lib/jquery/jquery.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/popper.js/popper.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/bootstrap/bootstrap.js"></script>
-    <script src="<?php echo base_url(); ?>assets/lib/jquery-ui/jquery-ui.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/jquery-toggles/toggles.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/highlightjs/highlight.pack.js"></script>
+    <script src="<?php echo base_url(); ?>assets/lib/datatables/jquery.dataTables.js"></script>
+    <script src="<?php echo base_url(); ?>assets/lib/datatables-responsive/dataTables.responsive.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/select2/js/select2.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/lib/spectrum/spectrum.js"></script>
-
 
     <script src="<?php echo base_url(); ?>assets/js/amanda.js"></script>
     <script>
       $(function(){
-
         'use strict';
 
-        $('.select2').select2({
-          minimumResultsForSearch: Infinity
+        $('#datatable1').DataTable({
+          responsive: true,
+          language: {
+            searchPlaceholder: 'Search...',
+            sSearch: '',
+            lengthMenu: '_MENU_ items/page',
+          }
         });
 
-        / Select2 by showing the search
-        $('.select2-show-search').select2({
-          minimumResultsForSearch: ''
+        $('#datatable2').DataTable({
+          bLengthChange: false,
+          searching: false,
+          responsive: true
         });
 
-        / Select2 with tagging support
-        $('.select2-tag').select2({
-          tags: true,
-          tokenSeparators: [',', ' ']
-        });
-
-        / Datepicker
-        $('.fc-datepicker').datepicker({
-          showOtherMonths: true,
-          selectOtherMonths: true
-        });
-
-        $('#datepickerNoOfMonths').datepicker({
-          showOtherMonths: true,
-          selectOtherMonths: true,
-          numberOfMonths: 2
-        });
-
-        / Color picker
-        $('#colorpicker').spectrum({
-          color: '#17A2B8'
-        });
-
-        $('#showAlpha').spectrum({
-          color: 'rgba(23,162,184,0.5)',
-          showAlpha: true
-        });
-
-        $('#showPaletteOnly').spectrum({
-            showPaletteOnly: true,
-            showPalette:true,
-            color: '#DC3545',
-            palette: [
-                ['#1D2939', '#fff', '#0866C6','#23BF08', '#F49917'],
-                ['#DC3545', '#17A2B8', '#6610F2', '#fa1e81', '#72e7a6']
-            ]
-        });
+        // Select2
+        $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
 
       });
     </script>
   </body>
 </html>
-

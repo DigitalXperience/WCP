@@ -31,7 +31,7 @@
     <meta name="author" content="ThemePixels">
 
 
-    <title>Amanda Responsive Bootstrap 4 Admin Template</title>
+    <title><?php echo $title; ?></title>
 
     <!-- vendor css -->
     <link href=".<?php echo base_url(); ?>assets/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -350,13 +350,12 @@
                             }
                     } ?>
                 <tr>
-                  <td>Garrett</td>
-                  <td>Winters</td>
-                  <td>Accountant</td>
-                  <td>2011/07/25</td>
-                  <td>$170,750</td>
-                  <td>$170,750</td>
-                  <td>g.winters@datatables.net</td>
+                  <td>Equipe 1</td>
+                  <td>Equipe 2</td>
+                  <td>Date</td>
+                  <td>Score eq.1</td>
+                  <td>Score eq.2</td>
+                  <td>Mise en avant?</td>
                 </tr>
                 
               </tbody>

@@ -2,6 +2,14 @@ Nouvelle rencontre
 
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
+  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js" />
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" />
+
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -54,9 +62,15 @@ Nouvelle rencontre
                            <div class="col-md-6">
                                 <div class="form-group">
                                   <label>Date et Heure</label>
-                                  <span class="input-group-addon"><i class="icon ion-calendar tx-16 lh-0 op-6"></i></span>
+                                  <!-- <span class="input-group-addon"><i class="icon ion-calendar tx-16 lh-0 op-6"></i></span>
   								<input type="text" class="form-control fc-datepicker" placeholder="YYYY-MM-DD hh:mm:ss" name="date_heure" value="<?php if(isset($current)) echo $current->date_heure; ?>" required>
-
+									-->
+									<div class='input-group date' id='datetimepicker5'>
+					                    <input type='text' class="form-control" />
+					                    <span class="input-group-addon">
+					                        <span class="glyphicon glyphicon-calendar"></span>
+					                    </span>
+					                </div>
                                 </div>
                                 
                            </div>
@@ -83,4 +97,18 @@ Nouvelle rencontre
 		 
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
+
+      <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker5').datetimepicker({
+                    defaultDate: "11/1/2013",
+                    disabledDates: [
+                        moment("12/25/2013"),
+                        new Date(2013, 11 - 1, 21),
+                        "11/22/2013 00:53"
+                    ]
+                });
+            });
+        </script>
+      
 <?php include ('inc/footer.php'); ?>

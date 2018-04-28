@@ -48,6 +48,10 @@ class Rencontres extends CI_Controller{
             	}
 
 				if(!$error){
+					// TODO 
+					$this->input->post('date_heure', $this->input->post('r_date').' '.$this->input->post('r_heure'));
+					// end TODO
+					
 					if(empty($this->input->post('id'))) {
 						$s = $this->rencontres->newRencontre($this->input->post()); 
 					} else { 

@@ -32,16 +32,6 @@
 
     <title><?php echo $title; ?></title>
 
-    <!--
-  	<script type="text/javascript" src="https:/cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  	<script type="text/javascript" src="https:/cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
-  	<script type="text/javascript" src="https:/cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
-  	<script type="text/javascript" src="https:/cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-
-  	<link rel="stylesheet" href="https:/cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js" />
-  	<link rel="stylesheet" href="https:/cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" />
-	-->
-
     <!-- vendor css -->
     <link href="<?php echo base_url(); ?>assets/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/Ionicons/css/ionicons.css" rel="stylesheet">
@@ -53,6 +43,7 @@
 
     <!-- Amanda CSS -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/amanda.css">
+
   </head>
 
   <body>
@@ -370,15 +361,12 @@ Nouvelle rencontre
                            <div class="col-md-6">
                                 <div class="form-group">
                                   <label>Date et Heure</label>
-                                  <!-- <span class="input-group-addon"><i class="icon ion-calendar tx-16 lh-0 op-6"></i></span>
-  								<input type="text" class="form-control fc-datepicker" placeholder="YYYY-MM-DD hh:mm:ss" name="date_heure" value="<?php //if(isset($current)) echo $current->date_heure; ?>" required>
-									-->
-									<div class='input-group date' id='datetimepicker5'>
-					                    <input type='text' class="form-control" />
-					                    <span class="input-group-addon">
-					                        <span class="glyphicon glyphicon-calendar"></span>
-					                    </span>
-					                </div>
+                                  <div class="input-group">
+                                    
+                                    <span class="input-group-addon"><i class="icon ion-calendar tx-16 lh-0 op-6"></i></span>
+                                    <input type="text" id="r_date" name="r_date" class="form-control fc-datepicker" placeholder="YYYY-MM-DD">
+                                  </div>
+                                  <input type="text" name="r_heure" placeholder="hh:mm" />
                                 </div>
                                 
                            </div>
@@ -405,19 +393,6 @@ Nouvelle rencontre
 		 
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
-
-      <script type="text/javascript">
-           /* $(function () {
-                $('#datetimepicker5').datetimepicker({
-                    defaultDate: "11/1/2013",
-                    disabledDates: [
-                        moment("12/25/2013"),
-                        new Date(2013, 11 - 1, 21),
-                        "11/22/2013 00:53"
-                    ]
-                });
-            });*/
-        </script>
       
 <div class="am-footer">
         <span>Copyright &copy;. All Rights Reserved. Amanda Responsive Bootstrap 4 Admin Dashboard.</span>
@@ -435,62 +410,19 @@ Nouvelle rencontre
     <script src="<?php echo base_url(); ?>assets/lib/select2/js/select2.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/spectrum/spectrum.js"></script>
 
-
     <script src="<?php echo base_url(); ?>assets/js/amanda.js"></script>
-    <script>
-      $(function(){
 
-        'use strict';
-
-        $('.select2').select2({
-          minimumResultsForSearch: Infinity
-        });
-
-        / Select2 by showing the search
-        $('.select2-show-search').select2({
-          minimumResultsForSearch: ''
-        });
-
-        / Select2 with tagging support
-        $('.select2-tag').select2({
-          tags: true,
-          tokenSeparators: [',', ' ']
-        });
-
-        / Datepicker
-        $('.fc-datepicker').datepicker({
-          showOtherMonths: true,
-          selectOtherMonths: true
-        });
-
-        $('#datepickerNoOfMonths').datepicker({
-          showOtherMonths: true,
-          selectOtherMonths: true,
+    <script type="text/javascript">
+      $(function () {
+        $('#r_date').datepicker({
+          showOtherMonths: false,
+          selectOtherMonths: false,
+          format: 'yyyy-mm-dd',
           numberOfMonths: 2
         });
-
-        / Color picker
-        $('#colorpicker').spectrum({
-          color: '#17A2B8'
-        });
-
-        $('#showAlpha').spectrum({
-          color: 'rgba(23,162,184,0.5)',
-          showAlpha: true
-        });
-
-        $('#showPaletteOnly').spectrum({
-            showPaletteOnly: true,
-            showPalette:true,
-            color: '#DC3545',
-            palette: [
-                ['#1D2939', '#fff', '#0866C6','#23BF08', '#F49917'],
-                ['#DC3545', '#17A2B8', '#6610F2', '#fa1e81', '#72e7a6']
-            ]
-        });
-
       });
     </script>
+
   </body>
 </html>
 

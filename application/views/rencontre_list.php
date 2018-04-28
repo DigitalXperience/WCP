@@ -349,14 +349,6 @@
                                       </tr>';
                             }
                     } ?>
-                <tr>
-                  <td>Equipe 1</td>
-                  <td>Equipe 2</td>
-                  <td>Date</td>
-                  <td>Score eq.1</td>
-                  <td>Score eq.2</td>
-                  <td>Mise en avant?</td>
-                </tr>
                 
               </tbody>
             </table>

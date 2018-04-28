@@ -12,6 +12,10 @@ Class Equipes_model extends CI_Model
 		}
 		return false;
 	}
+
+	public function newEquipe($tab) {
+		return $this->db->insert(TABLE_EQUIPES, $tab);
+	}
 	
 }
 ?>

@@ -1,5 +1,4 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,15 +12,15 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Amanda">
     <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
-    <meta name="twitter:image" content="http://themepixels.me/amanda/img/amanda-social.png">
+    <meta name="twitter:image" content="http:/themepixels.me/amanda/img/amanda-social.png">
 
     <!-- Facebook -->
-    <meta property="og:url" content="http://themepixels.me/amanda">
+    <meta property="og:url" content="http:/themepixels.me/amanda">
     <meta property="og:title" content="Bracket">
     <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
 
-    <meta property="og:image" content="http://themepixels.me/amanda/img/amanda-social.png">
-    <meta property="og:image:secure_url" content="http://themepixels.me/amanda/img/amanda-social.png">
+    <meta property="og:image" content="http:/themepixels.me/amanda/img/amanda-social.png">
+    <meta property="og:image:secure_url" content="http:/themepixels.me/amanda/img/amanda-social.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="600">
@@ -34,13 +33,13 @@
     <title><?php echo $title; ?></title>
 
     <!-- vendor css -->
-    <link href=".<?php echo base_url(); ?>assets/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/Ionicons/css/ionicons.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/jquery-toggles/toggles-full.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/highlightjs/github.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/lib/datatables/jquery.dataTables.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/select2/css/select2.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/lib/spectrum/spectrum.css" rel="stylesheet">
 
     <!-- Amanda CSS -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/amanda.css">
@@ -151,8 +150,8 @@
 
       <div class="tab-content">
         <div id="mainMenu" class="tab-pane active">
-           <?php include ('inc/menu.php'); ?>
-		</div><!-- #mainMenu -->
+          <?php include ('inc/menu.php'); ?>
+		 </div><!-- #mainMenu -->
         <div id="emailMenu" class="tab-pane">
           <div class="pd-x-20 pd-y-10">
             <a href="" class="btn btn-orange btn-block btn-compose">Compose Email</a>
@@ -306,7 +305,7 @@
     </div><!-- am-sideleft -->
 
     <div class="am-pagetitle">
-      <h5 class="am-title"><?php echo $title; ?></h5>
+      <h5 class="am-title">Form Elements</h5>
       <form id="searchBar" class="search-bar" action="index.html">
         <div class="form-control-wrapper">
           <input type="search" class="form-control bd-0" placeholder="Search...">
@@ -317,95 +316,81 @@
 
     <div class="am-mainpanel">
       <div class="am-pagebody">
+Nouvelle équipe
 
-        <div class="card pd-20 pd-sm-40">
-          <h6 class="card-body-title">Basic Responsive DataTable</h6>
-          <p class="mg-b-20 mg-sm-b-30">Searching, ordering and paging goodness will be immediately added to the table, as shown in this example.</p>
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
 
-          <div class="table-wrapper">
-            <table id="datatable1" class="table display responsive nowrap">
-              <thead>
-                <tr>
-                  <th>#</th>
-                    <th>Nom</th>
-                    <th>Genre</th>
-                    <th>Date de naissance</th>
-                    <th>Numéro</th>
-                    <th>Points</th>
-                    <th>Mode de pronostics</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php if($liste){
-                            foreach ($liste as $row){
-                                echo '<tr id="row-'.$row->id.'">
-                                        <td>'.$row->id.'</td>
-                                        <td>'.$row->nom.'</td>
-                                        <td>'.$row->genre.'</td>
-                                        <td>'.$row->date_naissance.'</td>
-                                        <td>'.$row->numero.'</td>
-                                        <td>'.$row->pts.'</td>
-                                        <td>'.($row->mode_prono == '0' ? 'Mode 1' : 'Mode 2') .'</td>
-                                      </tr>';
-                            }
-                    } ?>
-                
-              </tbody>
-            </table>
-          </div><!-- table-wrapper -->
-        </div><!-- card -->
+        <!-- Main content -->
+        <section class="content">
+            <?php if(isset($alert)) echo $alert; ?>
+			<!-- general form elements -->
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Entrez les informations de l'équipe</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" action="<?php echo base_url().'index.php/equipes/ajouter'; ?>" method="post">
+                  <div class="box-body">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Nom </label>
+                            <input type="text" name="name" value="<?php if(isset($current)) echo $current->name; ?>" class="form-control" placeholder="Entrez son nom " required />
+                          </div>
 
-        <p class="tx-11 tx-uppercase tx-spacing-2 mg-t-40 mg-b-10 tx-gray-600">Javascript Code</p>
-        <pre><code class="javascript pd-20">$('#datatable1').DataTable({
-responsive: true,
-language: {
-  searchPlaceholder: 'Search...',
-  sSearch: '',
-  lengthMenu: '_MENU_ items/page',
-}
-});</code></pre>
+                          <div class="form-group">
+                            <label>Lien vers drapeau</label>
+                            <input type="text" class="form-control" value="<?php if(isset($current)) echo $current->flag; ?>" name="flag" placeholder="Entrez le lien vers le drapeau" required />
+                          </div>
+                        </div>
+                      </div>
+                  </div><!-- /.box-body -->
 
-      </div><!-- am-pagebody -->
-      <div class="am-footer">
-        <span>Copyright &copy;. All Rights Reserved. 33 Export Dashboard.</span>
-        <span>Created by: Digital Experience, Sarl.</span>
+                  <div class="box-footer">
+                    <?php if(isset($current)) echo '<input type="hidden" name="id" value="'.$current->id.'">'; ?>
+                    <button type="submit" class="btn btn-primary">Enregistrer</button> <button type="reset" class="btn btn-default">Annuler</button>
+                  </div>
+                </form>
+              </div><!-- /.box -->
+         
+		 
+		 
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+
+      <script type="text/javascript">
+           /* $(function () {
+                $('#datetimepicker5').datetimepicker({
+                    defaultDate: "11/1/2013",
+                    disabledDates: [
+                        moment("12/25/2013"),
+                        new Date(2013, 11 - 1, 21),
+                        "11/22/2013 00:53"
+                    ]
+                });
+            });*/
+        </script>
+      
+<div class="am-footer">
+        <span>Copyright &copy;. All Rights Reserved. Amanda Responsive Bootstrap 4 Admin Dashboard.</span>
+        <span>Created by: ThemePixels, Inc.</span>
       </div><!-- am-footer -->
     </div><!-- am-mainpanel -->
 
     <script src="<?php echo base_url(); ?>assets/lib/jquery/jquery.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/popper.js/popper.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/bootstrap/bootstrap.js"></script>
+    <script src="<?php echo base_url(); ?>assets/lib/jquery-ui/jquery-ui.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/jquery-toggles/toggles.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/highlightjs/highlight.pack.js"></script>
-    <script src="<?php echo base_url(); ?>assets/lib/datatables/jquery.dataTables.js"></script>
-    <script src="<?php echo base_url(); ?>assets/lib/datatables-responsive/dataTables.responsive.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/select2/js/select2.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/lib/spectrum/spectrum.js"></script>
+
 
     <script src="<?php echo base_url(); ?>assets/js/amanda.js"></script>
-    <script>
-      $(function(){
-        'use strict';
-
-        $('#datatable1').DataTable({
-          responsive: true,
-          language: {
-            searchPlaceholder: 'Search...',
-            sSearch: '',
-            lengthMenu: '_MENU_ items/page',
-          }
-        });
-
-        $('#datatable2').DataTable({
-          bLengthChange: false,
-          searching: false,
-          responsive: true
-        });
-
-        // Select2
-        $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
-
-      });
-    </script>
+    
   </body>
 </html>
+

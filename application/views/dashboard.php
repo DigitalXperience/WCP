@@ -59,14 +59,14 @@
             <span class="square-8 bg-danger pos-absolute t-15 r-0 rounded-circle"></span>
             <!-- end: if statement -->
           </a>
-          <div class="dropdown-menu wd-300 pd-0-force">
+          <!--<div class="dropdown-menu wd-300 pd-0-force">
             <div class="dropdown-menu-header">
               <label>Notifications</label>
               <a href="">Mark All as Read</a>
-            </div><!-- d-flex -->
+            </div>
 
             <div class="media-list">
-              <!-- loop starts here -->
+              
               <a href="" class="media-list-link read">
                 <div class="media pd-x-20 pd-y-15">
                   <img src="<?php echo base_url(); ?>assets/img/img8.jpg" class="wd-40 rounded-circle" alt="">
@@ -74,9 +74,9 @@
                     <p class="tx-13 mg-b-0"><strong class="tx-medium">Suzzeth Bungaos</strong> tagged you and 18 others in a post.</p>
                     <span class="tx-12">October 03, 2017 8:45am</span>
                   </div>
-                </div><!-- media -->
+                </div>
               </a>
-              <!-- loop ends here -->
+              
               <a href="" class="media-list-link read">
                 <div class="media pd-x-20 pd-y-15">
                   <img src="<?php echo base_url(); ?>assets/img/img9.jpg" class="wd-40 rounded-circle" alt="">
@@ -84,7 +84,7 @@
                     <p class="tx-13 mg-b-0"><strong class="tx-medium">Mellisa Brown</strong> appreciated your work <strong class="tx-medium">The Social Network</strong></p>
                     <span class="tx-12">October 02, 2017 12:44am</span>
                   </div>
-                </div><!-- media -->
+                </div>
               </a>
               <a href="" class="media-list-link read">
                 <div class="media pd-x-20 pd-y-15">
@@ -93,7 +93,7 @@
                     <p class="tx-13 mg-b-0">20+ new items added are for sale in your <strong class="tx-medium">Sale Group</strong></p>
                     <span class="tx-12">October 01, 2017 10:20pm</span>
                   </div>
-                </div><!-- media -->
+                </div>
               </a>
               <a href="" class="media-list-link read">
                 <div class="media pd-x-20 pd-y-15">
@@ -102,13 +102,13 @@
                     <p class="tx-13 mg-b-0"><strong class="tx-medium">Julius Erving</strong> wants to connect with you on your conversation with <strong class="tx-medium">Ronnie Mara</strong></p>
                     <span class="tx-12">October 01, 2017 6:08pm</span>
                   </div>
-                </div><!-- media -->
+                </div>
               </a>
               <div class="media-list-footer">
                 <a href="" class="tx-12"><i class="fa fa-angle-down mg-r-5"></i> Show All Notifications</a>
               </div>
-            </div><!-- media-list -->
-          </div><!-- dropdown-menu -->
+            </div>
+          </div>--><!-- dropdown-menu -->
         </div><!-- dropdown -->
         <div class="dropdown dropdown-profile">
           <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
@@ -149,23 +149,10 @@
         <div id="mainMenu" class="tab-pane active">
           <?php include ('inc/menu.php'); ?>
         </div><!-- #mainMenu -->
-       
-        <div id="settingMenu" class="tab-pane">
-          <div class="pd-x-15">
-            <label class="tx-uppercase tx-11 mg-t-10 tx-orange mg-b-15 tx-medium">Réglages rapide</label>
-            <div class="bd pd-15">
-              <h6 class="tx-13 tx-normal tx-gray-800">Notifications</h6>
-              <p class="tx-12">Envoyer des notifications avant chaque match.</p>
-              <div class="toggle toggle-light warning"></div>
-            </div><!-- bd -->
-
-            <div class="bd pd-15 mg-t-15">
-              <h6 class="tx-13 tx-normal tx-gray-800">Notifications</h6>
-              <p class="tx-12">Envoyer des notifications après chaque match.</p>
-              <div class="toggle toggle-light warning"></div>
-            </div><!-- bd -->
-          </div>
-        </div><!-- #settingMenu -->
+		
+		<?php include('inc/parametres-rapides.php') ?>
+        
+		<!-- #settingMenu -->
       </div><!-- tab-content -->
   </div><!-- am-sideleft -->
 
@@ -183,13 +170,13 @@
               <div class="overlay-body pd-x-20 pd-t-20">
                 <div class="d-flex justify-content-between">
                   <div>
-                    <h6 class="tx-12 tx-uppercase tx-inverse tx-bold mg-b-5">Today's Earnings</h6>
-                    <p class="tx-12">November 21, 2017</p>
+                    <h6 class="tx-12 tx-uppercase tx-inverse tx-bold mg-b-5">Pronostics effectués ce jour</h6>
+                    <p class="tx-12"><?php echo strftime("%A") . " " . strftime("%e") . " " . strftime("%B") . " " . strftime("%Y") ; ?></p>
                   </div>
-                  <a href="" class="tx-gray-600 hover-info"><i class="icon ion-more tx-16 lh-0"></i></a>
+                  <a href="#" class="tx-gray-600 hover-info"><i class="icon ion-more tx-16 lh-0"></i></a>
                 </div><!-- d-flex -->
-                <h2 class="mg-b-5 tx-inverse tx-lato">$12,212</h2>
-                <p class="tx-12 mg-b-0">Earnings before taxes.</p>
+                <h2 class="mg-b-5 tx-inverse tx-lato">152</h2>
+                <p class="tx-12 mg-b-0">Pour un total de 68 pronostiqueurs</p>
               </div>
             </div><!-- card -->
           </div><!-- col-4 -->
@@ -199,13 +186,13 @@
               <div class="overlay-body pd-x-20 pd-t-20">
                 <div class="d-flex justify-content-between">
                   <div>
-                    <h6 class="tx-12 tx-uppercase tx-inverse tx-bold mg-b-5">This Week's Earnings</h6>
-                    <p class="tx-12">November 20 - 27, 2017</p>
+                    <h6 class="tx-12 tx-uppercase tx-inverse tx-bold mg-b-5">Rencontre du jour</h6>
+                    <p class="tx-12">Prochain Match à 16h50</p>
                   </div>
-                  <a href="" class="tx-gray-600 hover-info"><i class="icon ion-more tx-16 lh-0"></i></a>
+                  <a href="#" class="tx-gray-600 hover-info"><i class="icon ion-more tx-16 lh-0"></i></a>
                 </div><!-- d-flex -->
-                <h2 class="mg-b-5 tx-inverse tx-lato">$28,746</h2>
-                <p class="tx-12 mg-b-0">Earnings before taxes.</p>
+                <h2 class="mg-b-5 tx-inverse tx-lato">2</h2>
+                <p class="tx-12 mg-b-0">Allemagne - Brésil</p>
               </div>
             </div><!-- card -->
           </div><!-- col-4 -->
@@ -215,13 +202,13 @@
               <div class="overlay-body pd-x-20 pd-t-20">
                 <div class="d-flex justify-content-between">
                   <div>
-                    <h6 class="tx-12 tx-uppercase tx-inverse tx-bold mg-b-5">This Month's Earnings</h6>
-                    <p class="tx-12">November 1 - 30, 2017</p>
+                    <h6 class="tx-12 tx-uppercase tx-inverse tx-bold mg-b-5">Nombre total de pronostiqueurs</h6>
+                    <p class="tx-12">Dernière inscription à 15h45</p>
                   </div>
                   <a href="" class="tx-gray-600 hover-info"><i class="icon ion-more tx-16 lh-0"></i></a>
                 </div><!-- d-flex -->
-                <h2 class="mg-b-5 tx-inverse tx-lato">$72,118</h2>
-                <p class="tx-12 mg-b-0">Earnings before taxes.</p>
+                <h2 class="mg-b-5 tx-inverse tx-lato">856</h2>
+                <p class="tx-12 mg-b-0">102 pronostiqueurs inactifs</p>
               </div>
             </div><!-- card -->
           </div><!-- col-4 -->
@@ -232,7 +219,7 @@
           <div class="col-lg-8">
             <div class="card">
               <div class="card-header bg-transparent pd-20">
-                <h6 class="card-title tx-uppercase tx-12 mg-b-0">User Transaction History</h6>
+                <h6 class="card-title tx-uppercase tx-12 mg-b-0">Historique des pronostiques</h6>
               </div><!-- card-header -->
               <div class="table-responsive">
                 <table class="table table-white mg-b-0 tx-12">

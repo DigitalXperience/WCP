@@ -78,7 +78,7 @@
             </li><!-- nav-item -->
             <li class="nav-item">
               <a href="" class="nav-link with-sub">
-                <i class="icon ion-ios-analytics-outline"></i>
+                <i class="icon ion-ios-list-outline"></i>
                 <span>Gestion des rencontres</span>
               </a>
               <ul class="nav-sub">
@@ -88,7 +88,7 @@
             </li><!-- nav-item -->
             <li class="nav-item">
               <a href="" class="nav-link with-sub">
-                <i class="icon ion-ios-analytics-outline"></i>
+                <i class="icon ion-ios-person-outline"></i>
                 <span>Gestion des utilisateurs</span>
               </a>
               <ul class="nav-sub">

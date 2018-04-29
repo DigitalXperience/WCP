@@ -16,7 +16,7 @@ class Dashboard extends CI_Controller{
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
 			$data['nbusers'] = $this->user->getTotal();
-			$data['title'] = "Tableau de bord journalier";
+			$data['title'] = "Tableau de bord";
 			$this->load->view('dashboard', $data);
 		}
 		else

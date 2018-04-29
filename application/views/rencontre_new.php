@@ -59,6 +59,7 @@
 	  <div class="card pd-20 pd-sm-40">
           <h6 class="card-body-title">Nouvelle Rencontre</h6>
           <p class="mg-b-20 mg-sm-b-30">Entrez les informations de la rencontre</p>
+			<?php if(isset($alert)) echo $alert; ?>
 			<div class="form-layout">
 			  <div class="row mg-b-25">
 				<div class="col-lg-4">
@@ -106,19 +107,15 @@
 			  </div>
 			  
 			  <div class="row mg-t-10">
+					Mis en avant
 					<div class="col-lg-3">
-					  <label class="rdiobox">
-						<input name="rdio" type="radio">
-						<span>Mettre en avant</span>
-					  </label>
+					  <label class="rdiobox"><input type="radio" value="1" name="en_avant" <?php if (isset($current) && $current->en_avant == "1") { echo "checked"; } ?> /><span>Oui</span></label>
 					</div><!-- col-3 -->
 					<div class="col-lg-3 mg-t-20 mg-lg-t-0">
-					  <label class="rdiobox">
-						<input name="rdio" type="radio" checked>
-						<span>Ne pas mettre en avant</span>
-					  </label>
+					  <label class="rdiobox"><input type="radio" value="0" name="en_avant" <?php if (isset($current) && $current->en_avant == "0") { echo "checked"; } ?> /><span>Non</span></label>
 					</div>
-				  </div><!-- row -->
+					
+			</div><!-- row -->
 			  <div class="form-layout-footer">
 					
                     <?php if(isset($current)) echo '<input type="hidden" name="id" value="'.$current->id.'">'; ?>
@@ -130,82 +127,7 @@
 	  </form>
 	  
 
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-
-        <!-- Main content -->
-        <section class="content">
-            <?php if(isset($alert)) echo $alert; ?>
-			<!-- general form elements -->
-              <div class="box box-primary">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Entrez les informations de la rencontre</h3>
-                </div><!-- /.box-header -->
-                <!-- form start -->
-                <form role="form" action="<?php echo base_url().'index.php/rencontres/ajouter'; ?>" method="post">
-                  <div class="box-body">
-                      <div class="row">
-                          <div class="col-md-6">
-                                <div class="form-group">
-                                  <label>Equipe 1 </label>
-                                  <select class="form-control" name="equipe_id1" required>
-                                    <option value="">Sélectionnez l'équipe 1</option>
-                                    <?php foreach ($lstEquipes as $equipe) { 
-                         				echo "<option value='".$equipe->id."'>".$equipe->name."</option>";           	
-                                    } ?>
-                                  </select>
-                                </div>
-                                
-                           </div>
-                           <div class="col-md-6">
-                                <div class="form-group">
-                                  <label>Equipe 2 </label>
-                                  <select class="form-control" name="equipe_id2" required>
-                                    <option value="">Sélectionnez l'équipe 2</option>
-                                    <?php foreach ($lstEquipes as $equipe) { 
-                         				echo "<option value='".$equipe->id."'>".$equipe->name."</option>";           	
-                                    } ?>
-                                  </select>
-                                </div>
-                                
-                           </div>
-                           <div class="col-md-6">
-                                <div class="form-group">
-                                  <label>Date et Heure</label>
-                                  <div class="input-group">
-                                    
-                                    <span class="input-group-addon"><i class="icon ion-calendar tx-16 lh-0 op-6"></i></span>
-                                    <input type="text" id="r_date" name="r_date" class="form-control fc-datepicker" placeholder="YYYY-MM-DD">
-                                  </div>
-                                  <input type="text" name="r_heure" placeholder="hh:mm" />
-                                </div>
-                                
-                           </div>
-                           <div class="col-md-6">
-                                <div class="form-group">
-                                  <label>Mis en avant</label>
-                                  <input type="radio" class="form-control" value="1" name="en_avant" <?php if (isset($current) && $current->en_avant == "1") { echo "checked"; } ?> /> Oui  
-                                  <input type="radio" class="form-control" value="0" name="en_avant" <?php if (isset($current) && $current->en_avant == "0") { echo "checked"; } ?> /> Non  
-                                </div>
-                                
-                           </div>
-
-                       </div>
-					    
-                  </div><!-- /.box-body -->
-
-                  <div class="box-footer">
-                    <?php if(isset($current)) echo '<input type="hidden" name="id" value="'.$current->id.'">'; ?>
-                    <button type="submit" class="btn btn-primary">Enregistrer</button> <button type="reset" class="btn btn-default">Annuler</button>
-                  </div>
-                </form>
-              </div><!-- /.box -->
-         
-		 
-		 
-        </section><!-- /.content -->
-      </div><!-- /.content-wrapper -->
-      
+     
 <div class="am-footer">
         <span>Copyright &copy;. All Rights Reserved. Amanda Responsive Bootstrap 4 Admin Dashboard.</span>
         <span>Created by: ThemePixels, Inc.</span>

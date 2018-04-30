@@ -63,7 +63,7 @@ class Rencontres extends CI_Controller{
 				if(!$error){
 					// TODO 
 					$posts = $this->input->post(); // On va utiliser $posts pour faire le reste... Merci CI, on gère la suite
-					$date_heure = date("Y-m-d", strtotime($this->input->post('r_date'))) . " " . $this->input->post('r_heure') . ":00"; //nouveau format
+					$date_heure = date("Y-d-m", strtotime($this->input->post('r_date'))) . " " . $this->input->post('r_heure') . ":00"; //nouveau format
 					unset($posts['r_date']); // on enlève r_date et r_heure
 					unset($posts['r_heure']);
 					$posts['date_heure'] = $date_heure; // nouvelle variable

@@ -69,7 +69,7 @@
                     <th>Date</th>
                     <th>Score eq.1</th>
                     <th>Score eq.2</th>
-                    <th>Mise en avant?</th>
+                    <th>Front</th>
                 </tr>
               </thead>
               <tbody>
@@ -79,7 +79,7 @@
                                         <td>'.$row->id_rencontre.'</td>
                                         <td>'.$row->equipe_1.'</td>
                                         <td>'.$row->equipe_2.'</td>
-                                        <td>'.$row->date_heure.'</td>
+                                        <td>'.date("d-m-Y", strtotime($row->date_heure)). ' à ' . date("h:i", strtotime($row->date_heure)) . '</td>
                                         <td>'.$row->score_eq1.'</td>
                                         <td>'.$row->score_eq2.'</td>
                                         <td>'.($row->en_avant == '0' ? 'Non' : 'Oui') .'</td>

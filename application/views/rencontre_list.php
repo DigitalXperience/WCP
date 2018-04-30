@@ -82,7 +82,7 @@
                                         <td>'.date("d-m-Y", strtotime($row->date_heure)). ' à ' . date("h:i", strtotime($row->date_heure)) . '</td>
                                         <td>'; if($row->score_eq1 == "") echo '<a href="' . base_url() . 'index.php/rencontres/updatescore/' . $row->id_rencontre . '">Ajouter</a>'; else echo $row->score_eq1;  echo '</td>
                                         <td>'; if($row->score_eq2 == "") echo '<a href="' . base_url() . 'index.php/rencontres/updatescore/' . $row->id_rencontre . '">Ajouter</a>'; else echo $row->score_eq2;  echo '</td>
-                                        <td>'.($row->en_avant == '0' ? 'Non' : 'Oui') .'</td>
+                                        <td><a href="' . base_url() . 'index.php/rencontres/en_avant/' . $row->id_rencontre . '">' . ($row->en_avant == '0' ? 'Non' : 'Oui') .'</a></td>
                                       </tr>';
                             }
                     } ?>

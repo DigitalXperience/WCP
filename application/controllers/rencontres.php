@@ -32,6 +32,19 @@ class Rencontres extends CI_Controller{
 			redirect('/login/');
 		}
 	}
+	
+	public function en_avant($id) {
+		if($this->session->userdata('logged_in'))
+		{
+			$s = $this->rencontres->mis_en_avant($id);
+			redirect("rencontres/liste/");
+		}
+		else
+		{
+			//If no session, redirect to login page
+			redirect('/login/');
+		}
+	}
 
 	public function ajouter() {
 		if($this->session->userdata('logged_in'))

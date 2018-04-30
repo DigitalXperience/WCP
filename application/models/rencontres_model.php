@@ -60,5 +60,19 @@ Class Rencontres_model extends CI_Model
         $this->db->where('id', $tab['id']);
         return $this->db->update(TABLE_RENCONTRES, $tab);
 	}
+	
+	public function addPointsToWinners($id_rencontre) {
+		// D'abord xeux qui ont pronostiqué le bon vainqueur 
+		$sql = "";
+	}
+	
+	public function mis_en_avant($id) {
+		$query = $this->db->query('
+			UPDATE '. TABLE_RENCONTRES .' SET `en_avant` = CASE
+				WHEN `en_avant` = 0 THEN 1
+				ELSE 0
+				END
+			WHERE id  in ('.$id.')  ;');
+	}
 }
 ?>

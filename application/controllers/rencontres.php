@@ -97,4 +97,47 @@ class Rencontres extends CI_Controller{
 		}
 	}
 	
+	public function updatescore($id)
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			if ($this->input->post()){
+                // vérification des inputs vide
+            	if ($this->input->post('score_eq1') == "") {
+            		$data['alert']=str_replace($searchError, 'Les scores ne peuvent pas être vide', $templateError);
+                        $error=true;
+            	}
+				
+				if(!$error){
+					if(empty($this->input->post('id'))) {
+						
+					} else { 
+						$s = $this->rencontres->updateScore($this->input->post()); 
+					}
+					if($s){
+						$data['alert'] = '<div class="alert alert-success alert-dismissable">
+								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+								<h4>	<i class="icon fa fa-check"></i> Bravo!</h4>
+								Scores de la rencontre mis à jour avec succès.
+							  </div>';
+							  redirect("rencontres/liste/");
+					} else {
+					   $data['alert']='<div class="alert alert-danger alert-dismissable"> <button type="button" class="close" data-       dismiss="alert" aria-hidden="true">×</button>
+						<h4><i class="icon fa fa-ban"></i> Erreur !</h4> Problème survenu lors de l\'enregistrement de la nouvelle rencontre. </div>'; 
+					}
+				}
+			}
+			$session_data = $this->session->userdata('logged_in');
+			$data['name'] = $this->user->getInfo($session_data['id']);
+			$data['title'] = "Mise à jour du score";
+            $data['current'] = $this->rencontres->get($id);
+			$this->load->view('rencontre_update_score', $data);
+		}
+		else
+		{
+			//If no session, redirect to login page
+			redirect('/login/');
+		}
+	}
+	
 }

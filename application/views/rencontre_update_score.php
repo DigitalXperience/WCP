@@ -14,7 +14,6 @@
     <link href="<?php echo base_url(); ?>assets/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/jquery-toggles/toggles-full.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/highlightjs/github.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/lib/select2/css/select2.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/spectrum/spectrum.css" rel="stylesheet">
 
     <!-- Amanda CSS -->
@@ -55,70 +54,36 @@
     <div class="am-mainpanel">
       <div class="am-pagebody">
 
-		<form role="form" action="<?php echo base_url().'index.php/rencontres/ajouter'; ?>" method="post" data-parsley-validate>
+		<form role="form" action="<?php echo base_url().'index.php/rencontres/updatescore/'.$current->id_rencontre; ?>" method="post" data-parsley-validate>
 	  <div class="card pd-20 pd-sm-40">
-          <h6 class="card-body-title">Nouvelle Rencontre</h6>
-          <p class="mg-b-20 mg-sm-b-30">Entrez les informations de la rencontre</p>
+          <h6 class="card-body-title">Mettre à jour le score</h6>
+          <p class="mg-b-20 mg-sm-b-30">Entrez les scores obtenus</p>
 			<?php if(isset($alert)) echo $alert; ?>
 			<div class="form-layout">
 			  <div class="row mg-b-25">
 				<div class="col-lg-4">
 					<div class="form-group mg-b-10-force">
-					  <label class="form-control-label">Equipe 1 : <span class="tx-danger">*</span></label>
-					  <select class="form-control select2" name="equipe_id1" data-placeholder="Sélectionnez l'équipe 1">
-						<option label="Sélectionnez l'équipe 1"></option>
-							<?php foreach ($lstEquipes as $equipe) { 
-								echo "<option value='".$equipe->id."'>".$equipe->name."</option>";           	
-							} ?>
-					  </select>
+					 <label class="form-control-label">Entrez le score de <?php if(isset($current)) echo $current->equipe_1; ?> : <span class="tx-danger">*</span></label>
+					  <input class="form-control" name="score_eq1" value="<?php if(isset($current)) echo $current->score_eq1; ?>" placeholder="Score de <?php if(isset($current)) echo $current->equipe_1; ?>" type="text" required />
+					
 					</div>
               </div>
 			  <div class="col-lg-4">
 					<div class="form-group mg-b-10-force">
-					  <label class="form-control-label">Equipe 2 : <span class="tx-danger">*</span></label>
-					  <select class="form-control select2" name="equipe_id2" data-placeholder="Sélectionnez l'équipe 2">
-						<option label="Sélectionnez l'équipe 2"></option>
-							<?php foreach ($lstEquipes as $equipe) { 
-								echo "<option value='".$equipe->id."'>".$equipe->name."</option>";           	
-							} ?>
-					  </select>
+					  <label class="form-control-label">Entrez le score de <?php if(isset($current)) echo $current->equipe_2; ?> : <span class="tx-danger">*</span></label>
+					  <input class="form-control" name="score_eq2" value="<?php if(isset($current)) echo $current->score_eq2; ?>" placeholder="Score de <?php if(isset($current)) echo $current->equipe_2; ?>" type="text" required />
+					
 					</div>
               </div>
 			  <div class="col-lg-4">
 					
 				</div><!-- col -->
-				<div class="col-lg-4">
-					<div class="form-group mg-b-10-force">
-						<p class="mg-b-10">Date de la rencontre</p>
-						<div class="wd-200">
-							<div class="input-group">
-							  <span class="input-group-addon"><i class="icon ion-calendar tx-16 lh-0 op-6"></i></span>
-							  <input type="text" id="r_date" name="r_date" class="form-control fc-datepicker" placeholder="JJ/MM/AAAA">
-							</div>
-						  </div>
-					  </div>
-				</div><!-- col -->
-				<div class="col-lg-4">
-					<div class="form-group">
-					  <label class="form-control-label">Heure de la recontre : <span class="tx-danger">*</span></label>
-					  <input class="form-control" type="text" name="r_heure" value="" placeholder="HH:MM">
-					</div>
-				</div><!-- col-4 -->
+				
 			  </div>
 			  
-			  <div class="row mg-t-10">
-					Mis en avant
-					<div class="col-lg-3">
-					  <label class="rdiobox"><input type="radio" value="1" name="en_avant" <?php if (isset($current) && $current->en_avant == "1") { echo "checked"; } ?> /><span>Oui</span></label>
-					</div><!-- col-3 -->
-					<div class="col-lg-3 mg-t-20 mg-lg-t-0">
-					  <label class="rdiobox"><input type="radio" value="0" name="en_avant" <?php if (isset($current) && $current->en_avant == "0") { echo "checked"; } ?> /><span>Non</span></label>
-					</div>
-					
-			</div><!-- row -->
 			  <div class="form-layout-footer">
 					
-                    <?php if(isset($current)) echo '<input type="hidden" name="id" value="'.$current->id.'">'; ?>
+                    <?php if(isset($current)) echo '<input type="hidden" name="id" value="'.$current->id_rencontre.'">'; ?>
 				  <button type="submit" class="btn btn-info mg-r-5">Enregistrer</button>
 				  <button type="reset" class="btn btn-secondary">Annuler</button>
 				</div>
@@ -141,33 +106,12 @@
     <script src="<?php echo base_url(); ?>assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/jquery-toggles/toggles.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/highlightjs/highlight.pack.js"></script>
-    <script src="<?php echo base_url(); ?>assets/lib/select2/js/select2.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/spectrum/spectrum.js"></script>
 
     <script src="<?php echo base_url(); ?>assets/js/amanda.js"></script>
 
     <script type="text/javascript">
-      $(function () {
-        /*$('#r_date').datepicker({
-          showOtherMonths: false,
-          selectOtherMonths: false,
-          format: 'yyyy-mm-dd',
-          numberOfMonths: 2
-        });*/
-		// Datepicker
-        $('.fc-datepicker').datepicker({
-          showOtherMonths: true,
-          selectOtherMonths: true
-        });
-      });
-	  
-	  $(function(){
-        'use strict';
-
-        $('.select2').select2({
-          minimumResultsForSearch: Infinity
-        });
-      })
+      
     </script>
 
   </body>

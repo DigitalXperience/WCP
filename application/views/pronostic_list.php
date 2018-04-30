@@ -7,30 +7,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Twitter -->
-    <meta name="twitter:site" content="@themepixels">
-    <meta name="twitter:creator" content="@themepixels">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Amanda">
-    <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
-    <meta name="twitter:image" content="http://themepixels.me/amanda/img/amanda-social.png">
-
-    <!-- Facebook -->
-    <meta property="og:url" content="http://themepixels.me/amanda">
-    <meta property="og:title" content="Bracket">
-    <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
-
-    <meta property="og:image" content="http://themepixels.me/amanda/img/amanda-social.png">
-    <meta property="og:image:secure_url" content="http://themepixels.me/amanda/img/amanda-social.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="600">
-
-    <!-- Meta -->
-    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
-    <meta name="author" content="ThemePixels">
-
-
     <title><?php echo $title; ?></title>
 
     <!-- vendor css -->
@@ -359,15 +335,6 @@
           </div><!-- table-wrapper -->
         </div><!-- card -->
 
-        <p class="tx-11 tx-uppercase tx-spacing-2 mg-t-40 mg-b-10 tx-gray-600">Javascript Code</p>
-        <pre><code class="javascript pd-20">$('#datatable1').DataTable({
-responsive: true,
-language: {
-  searchPlaceholder: 'Search...',
-  sSearch: '',
-  lengthMenu: '_MENU_ items/page',
-}
-});</code></pre>
 
       </div><!-- am-pagebody -->
       <div class="am-footer">

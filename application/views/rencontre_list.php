@@ -56,8 +56,8 @@
       <div class="am-pagebody">
 
         <div class="card pd-20 pd-sm-40">
-          <h6 class="card-body-title">Basic Responsive DataTable</h6>
-          <p class="mg-b-20 mg-sm-b-30">Searching, ordering and paging goodness will be immediately added to the table, as shown in this example.</p>
+          <h6 class="card-body-title"><?php echo $title; ?></h6>
+          <p class="mg-b-20 mg-sm-b-30"></p>
 
           <div class="table-wrapper">
             <table id="datatable1" class="table display responsive nowrap">
@@ -79,7 +79,7 @@
                                         <td>'.$row->id_rencontre.'</td>
                                         <td>'.$row->equipe_1.'</td>
                                         <td>'.$row->equipe_2.'</td>
-                                        <td>'.date("d-m-Y", strtotime($row->date_heure)). ' à ' . date("h:i", strtotime($row->date_heure)) . '</td>
+                                        <td>'.$row->date. ' à ' . $row->heure . '</td>
                                         <td>'; if($row->score_eq1 == "") echo '<a href="' . base_url() . 'index.php/rencontres/updatescore/' . $row->id_rencontre . '">Ajouter</a>'; else echo $row->score_eq1;  echo '</td>
                                         <td>'; if($row->score_eq2 == "") echo '<a href="' . base_url() . 'index.php/rencontres/updatescore/' . $row->id_rencontre . '">Ajouter</a>'; else echo $row->score_eq2;  echo '</td>
                                         <td><a href="' . base_url() . 'index.php/rencontres/en_avant/' . $row->id_rencontre . '">' . ($row->en_avant == '0' ? 'Non' : 'Oui') .'</a></td>

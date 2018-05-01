@@ -29,5 +29,15 @@ Class Pronostics_model extends CI_Model
 		return false;
 	}
 	
+	public function getAllPronosRencontre($id_rencontre) {
+		$query = $this->db->query('SELECT * FROM '. TABLE_PRONOSTICS .' WHERE rencontre_id = ' . $id_rencontre . ';');
+		$row = $query->result();
+		if (isset($row))
+		{
+			return $row;
+		}
+		return false;
+	}
+	
 }
 ?>

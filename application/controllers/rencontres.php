@@ -8,7 +8,7 @@ class Rencontres extends CI_Controller{
 		$this->load->model('user','',TRUE);
 		$this->load->model('rencontres_model','rencontres');
 		$this->load->model('equipes_model', 'equipes');
-		//$this->load->model('accounts','', TRUE);
+		$this->load->model('admin_config_model','admin_config');
 		//$this->load->model('log_model','logs');
 	}
 	
@@ -115,6 +115,7 @@ class Rencontres extends CI_Controller{
 		if($this->session->userdata('logged_in'))
 		{
 			if ($this->input->post()){
+				$error=false;
                 // vérification des inputs vide
             	if ($this->input->post('score_eq1') == "") {
             		$data['alert']=str_replace($searchError, 'Les scores ne peuvent pas être vide', $templateError);
@@ -125,7 +126,7 @@ class Rencontres extends CI_Controller{
 					if(empty($this->input->post('id'))) {
 						
 					} else { 
-						$s = $this->rencontres->updateScore($this->input->post()); 
+						$s = $this->rencontres->updateScore($this->input->post(), $this->input->post('score_eq1'), $this->input->post('score_eq2')); 
 					}
 					if($s){
 						$data['alert'] = '<div class="alert alert-success alert-dismissable">

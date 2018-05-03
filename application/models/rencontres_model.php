@@ -85,6 +85,8 @@ Class Rencontres_model extends CI_Model
 						$this->db->where('id', $pro->id);
 						$this->db->update(TABLE_PRONOSTICS, array('pts_obtenus' => 0));
 					}
+				} else { // Il a pro
+					
 				}
 			}
 			return true;

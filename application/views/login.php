@@ -5,31 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Twitter -->
-    <meta name="twitter:site" content="@themepixels">
-    <meta name="twitter:creator" content="@themepixels">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Amanda">
-    <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
-    <meta name="twitter:image" content="http://themepixels.me/amanda/img/amanda-social.png">
-
-    <!-- Facebook -->
-    <meta property="og:url" content="http://themepixels.me/amanda">
-    <meta property="og:title" content="Bracket">
-    <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
-
-    <meta property="og:image" content="http://themepixels.me/amanda/img/amanda-social.png">
-    <meta property="og:image:secure_url" content="http://themepixels.me/amanda/img/amanda-social.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="600">
-
-    <!-- Meta -->
-    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
-    <meta name="author" content="ThemePixels">
-
-
-    <title>Administration</title>
+    <title>Administration des matchs</title>
 
     <!-- vendor css -->
     <link href="<?php echo base_url(); ?>assets/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -73,6 +49,9 @@
 
             <button type="submit" id="login-button" class="btn btn-block">Se logger</button>
 			</form>
+			<div id="logo" class="d-xs-none">
+				<img src="<?php echo base_url(); ?>assets/img/logo.jpg" />
+			</div>
           </div>
 		  <!-- col-7 -->
         </div><!-- row -->
@@ -103,6 +82,7 @@ $("#username, #password").keyup(function(event){
 		$.post( "verifylogin", { username: login, password: password }).done(function( data ) {
 			//alert( "Data Loaded: " + data );
 			if(data != 'false') {
+				$('#logo').fadeIn(500);
 				setTimeout(function(){
 					$(location).attr('href', '<?php echo base_url(); ?>index.php/dashboard');
 					return false;

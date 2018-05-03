@@ -4796,7 +4796,7 @@ a.bg-success:focus, a.bg-success:hover {
 }
 
 .bg-info {
-  background-color: #17a2b8 !important;
+  background-color: #E72F42 !important;
 }
 
 a.bg-info:focus, a.bg-info:hover {
@@ -11720,10 +11720,10 @@ textarea.parsley-success:focus {
   border: 3px solid #28a745;
 }
 .toggle-light.warning .toggle-on.active {
-  background-color: #ffc107;
+  background-color: #E72F42;
 }
 .toggle-light.warning .toggle-on.active + .toggle-blob {
-  border: 3px solid #ffc107;
+  border: 3px solid #E72F42;
 }
 .toggle-light.danger .toggle-on.active {
   background-color: #dc3545;
@@ -11889,7 +11889,7 @@ textarea.parsley-success:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #232e40;
+  background-color: #E72F42;
   padding: 0 15px 0 0;
   z-index: 1000;
 }
@@ -12040,7 +12040,7 @@ textarea.parsley-success:focus {
   justify-content: center;
   font-size: 24px;
   line-height: 0;
-  color: #FB9337;
+  color: #000;
 }
 .am-navicon i {
   line-height: 0;
@@ -12192,7 +12192,7 @@ textarea.parsley-success:focus {
   left: -1px;
   right: -1px;
   height: 1px;
-  background-color: #FB9337;
+  background-color: #E72F42;
   top: 0;
   transition: all 0.2s ease-in-out;
   display: none;
@@ -12203,7 +12203,7 @@ textarea.parsley-success:focus {
 }
 .am-sideleft-tab .nav-link.active {
   background-color: #2d3a50;
-  color: #FB9337;
+  color: #E72F42;
 }
 .am-sideleft-tab .nav-link.active::after {
   display: block;
@@ -45319,7 +45319,7 @@ a.hover-white-8:hover, a.hover-white-8:focus {
 }
 
 .tx-orange {
-  color: #FB9337;
+  color: #E72F42;
 }
 
 .tx-pink {

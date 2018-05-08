@@ -52,7 +52,7 @@
       <div class="am-header-left">
         <a id="naviconLeft" href="" class="am-navicon d-none d-lg-flex"><i class="icon ion-navicon-round"></i></a>
         <a id="naviconLeftMobile" href="" class="am-navicon d-lg-none"><i class="icon ion-navicon-round"></i></a>
-        <a href="index.html" class="am-logo">amanda</a>
+        <a href="index.html" class="am-logo">Administration des matchs</a>
       </div><!-- am-header-left -->
 
       <div class="am-header-right">
@@ -313,8 +313,7 @@
       <div class="am-pagebody">
 
         <div class="card pd-20 pd-sm-40">
-          <h6 class="card-body-title">Basic Responsive DataTable</h6>
-          <p class="mg-b-20 mg-sm-b-30">Searching, ordering and paging goodness will be immediately added to the table, as shown in this example.</p>
+          <h6 class="card-body-title">LISTE DES UTILISATEURS</h6>
 
           <div class="table-wrapper">
             <table id="datatable1" class="table display responsive nowrap">

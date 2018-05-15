@@ -49,5 +49,11 @@ Class Pronostics_model extends CI_Model
 		return $this->db->count_all(TABLE_UTILISATEURS);
 	}
 	
+	public function countPronostiqueursInactifs() {
+		$this->db->from(TABLE_UTILISATEURS);
+		$this->db->where('`id` NOT IN (SELECT DISTINCT `utilisateur_id` FROM '. TABLE_PRONOSTICS .' )');
+		return $this->db->count_all_results();
+	}
+	
 }
 ?>

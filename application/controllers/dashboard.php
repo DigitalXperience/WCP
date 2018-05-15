@@ -20,6 +20,7 @@ class Dashboard extends CI_Controller{
 			$data['nbusers'] = $this->user->getTotal();
 			$data['today_pronos'] = $this->pronostics->countPronosticsDuJr();
 			$data['nb_pronostiqueurs'] = $this->pronostics->countPronostiqueurs();
+			$data['nb_pronostiqueurs_inactifs'] = $this->pronostics->countPronostiqueursInactifs();
 			$data['today_matchs'] = $this->rencontres->countRencontresDuJr();
 			$data['title'] = "Tableau de bord";
 			$this->load->view('dashboard', $data);

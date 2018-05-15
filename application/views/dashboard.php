@@ -96,8 +96,8 @@
                   </div>
                   <a href="" class="tx-gray-600 hover-info"><i class="icon ion-more tx-16 lh-0"></i></a>
                 </div><!-- d-flex -->
-                <h2 class="mg-b-5 tx-inverse tx-lato">856</h2>
-                <p class="tx-12 mg-b-0">102 pronostiqueurs inactifs</p>
+                <h2 class="mg-b-5 tx-inverse tx-lato"><?php echo $nb_pronostiqueurs; ?></h2>
+                <p class="tx-12 mg-b-0"><?php echo $nb_pronostiqueurs_inactifs; ?> pronostiqueurs inactifs</p>
               </div>
             </div><!-- card -->
           </div><!-- col-4 -->

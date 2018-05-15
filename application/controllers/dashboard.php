@@ -9,7 +9,7 @@ class Dashboard extends CI_Controller{
 		$this->load->model('accounts','',TRUE);
 		$this->load->model('log_model','logs');
 		$this->load->model('pronostics_model','pronostics');
-		$this->load->model('renontres_model','rencontres');
+		$this->load->model('rencontres_model','rencontres');
 	}
 	
 	public function index()

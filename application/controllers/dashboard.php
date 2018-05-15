@@ -8,6 +8,7 @@ class Dashboard extends CI_Controller{
 		$this->load->model('user','',TRUE);
 		$this->load->model('accounts','',TRUE);
 		$this->load->model('log_model','logs');
+		$this->load->model('pronostics_model','pronostics');
 	}
 	
 	public function index()
@@ -16,6 +17,7 @@ class Dashboard extends CI_Controller{
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
 			$data['nbusers'] = $this->user->getTotal();
+			$data['today_pronos'] = $this->pronostics->countPronosticsDuJr();
 			$data['title'] = "Tableau de bord";
 			$this->load->view('dashboard', $data);
 		}

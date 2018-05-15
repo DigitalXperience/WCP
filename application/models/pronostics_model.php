@@ -39,5 +39,11 @@ Class Pronostics_model extends CI_Model
 		return false;
 	}
 	
+	public function countPronosticsDuJr() {
+		$this->db->from(TABLE_PRONOSTICS);
+		$this->db->where('dateheure >= CURDATE()');
+		return $this->db->count_all_results();
+	}
+	
 }
 ?>

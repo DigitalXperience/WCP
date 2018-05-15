@@ -45,5 +45,9 @@ Class Pronostics_model extends CI_Model
 		return $this->db->count_all_results();
 	}
 	
+	public function countPronostiqueurs() {
+		return $this->db->count_all(TABLE_UTILISATEURS);
+	}
+	
 }
 ?>

@@ -18,6 +18,7 @@ class Dashboard extends CI_Controller{
 			$data['username'] = $session_data['username'];
 			$data['nbusers'] = $this->user->getTotal();
 			$data['today_pronos'] = $this->pronostics->countPronosticsDuJr();
+			$data['nb_pronostiqueurs'] = $this->pronostics->countPronostiqueurs();
 			$data['title'] = "Tableau de bord";
 			$this->load->view('dashboard', $data);
 		}

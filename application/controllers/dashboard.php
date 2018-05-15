@@ -9,6 +9,7 @@ class Dashboard extends CI_Controller{
 		$this->load->model('accounts','',TRUE);
 		$this->load->model('log_model','logs');
 		$this->load->model('pronostics_model','pronostics');
+		$this->load->model('renontres_model','rencontres');
 	}
 	
 	public function index()
@@ -19,6 +20,7 @@ class Dashboard extends CI_Controller{
 			$data['nbusers'] = $this->user->getTotal();
 			$data['today_pronos'] = $this->pronostics->countPronosticsDuJr();
 			$data['nb_pronostiqueurs'] = $this->pronostics->countPronostiqueurs();
+			$data['today_matchs'] = $this->rencontres->countRencontresDuJr();
 			$data['title'] = "Tableau de bord";
 			$this->load->view('dashboard', $data);
 		}

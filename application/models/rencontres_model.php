@@ -106,5 +106,12 @@ Class Rencontres_model extends CI_Model
 				END
 			WHERE id  in ('.$id.')  ;');
 	}
+	
+	public function countRencontresDuJr() {
+		$this->db->from(TABLE_RENCONTRES);
+		$this->db->where('date_heure >= CURDATE()');
+		return $this->db->count_all_results();
+	}
 }
+
 ?>

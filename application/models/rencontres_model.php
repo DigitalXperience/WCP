@@ -31,6 +31,20 @@ Class Rencontres_model extends CI_Model
 		return false;
 	}
 	
+	public function getTenLastMatchs() {
+		$query = $this->db->query("SET lc_time_names = 'fr_FR'");
+		$query = $this->db->query('SELECT DATE_FORMAT(r.date_heure, "%d %M") as date, DATE_FORMAT(r.date_heure, "%H:%i") as heure, eq1.name as eq1, eq2.name as eq2, r.score_eq1, r.score_eq2 FROM '. TABLE_RENCONTRES .' r 
+									LEFT JOIN '. TABLE_EQUIPES .' eq1 ON eq1.id = r.equipe_id1 
+									LEFT JOIN '. TABLE_EQUIPES .' eq2 ON eq2.id = r.equipe_id2 ORDER BY r.date_heure DESC LIMIT 9;');
+		
+		$row = $query->result();
+		if (isset($row))
+		{
+			return $row;
+		}
+		return false;
+	}
+	
 	public function get($id)
 	{
 		$query = $this->db->query('

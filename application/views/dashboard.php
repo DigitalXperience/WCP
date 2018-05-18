@@ -113,20 +113,23 @@
               <div class="table-responsive">
                 <table class="table table-white mg-b-0 tx-12">
                   <tbody>
+				  <?php if($pronostiques){
+                            foreach ($pronostiques as $row){ ?>
                     <tr>
                       <td class="pd-l-20 tx-center">
-                        <img src="<?php echo base_url(); ?>assets/img/img1.jpg" class="wd-36 rounded-circle" alt="Image">
+                        <img src="https://graph.facebook.com/<?php echo $row->id_fb; ?>/picture" class="wd-36 rounded-circle" alt="Image">
                       </td>
                       <td>
-                        <a href="" class="tx-inverse tx-14 tx-medium d-block">Patient Assontia</a>
-                        <span class="tx-11 d-block">Mode : Vainqueur</span>
+                        <a href="" class="tx-inverse tx-14 tx-medium d-block"><?php echo $row->nom; ?></a>
+                        <span class="tx-11 d-block"><?php if(is_null($row->score_eq1)) {  ?> Vainqueur : <?php echo $row->vainqueur; } else { echo $row->eq1 . " " . $row->score_eq1 . " - "  . $row->score_eq2 . " " . $row->eq2; } ?></span>
                       </td>
                       <td class="tx-12">
-                        <span class="square-8 bg-success mg-r-5 rounded-circle"></span> Allemagne - Bresil
+                        <span class="square-8 bg-success mg-r-5 rounded-circle"></span> <?php echo $row->eq1; ?> - <?php echo $row->eq2; ?>
                       </td>
-                      <td>A l'instant</td>
+                      <td><?php echo ucwords($row->dateheure); ?></td>
                     </tr>
-                    <tr>
+				  <?php } } ?>
+                    <!--<tr>
                       <td class="pd-l-20 tx-center">
                         <img src="<?php echo base_url(); ?>assets/img/img2.jpg" class="wd-36 rounded-circle" alt="Image">
                       </td>
@@ -180,7 +183,7 @@
                     </tr>
                     <tr>
                       <td class="pd-l-20 tx-center">
-                        <img src="<?php echo base_url(); ?>assets/img/img5.jpg" class="wd-36 rounded-circle" alt="Image">
+                        <img src="assets/img/img5.jpg" class="wd-36 rounded-circle" alt="Image">
                       </td>
                       <td>
                         <a href="" class="tx-inverse tx-14 tx-medium d-block">John L. Goulette</a>
@@ -190,17 +193,17 @@
                         <span class="square-8 bg-pink mg-r-5 rounded-circle"></span> Account deactivated
                       </td>
                       <td>Mar 30, 2017 10:30am</td>
-                    </tr>
+                    </tr>-->
                   </tbody>
                 </table>
               </div><!-- table-responsive -->
               <div class="card-footer tx-12 pd-y-15 bg-transparent bd-t bd-gray-200">
-                <a href=""><i class="fa fa-angle-down mg-r-5"></i>View All Transaction History</a>
+                <a href="<?php echo base_url('index.php/pronostics/liste'); ?>"><i class="fa fa-angle-down mg-r-5"></i>View All Transaction History</a>
               </div><!-- card-footer -->
             </div><!-- card -->
           </div><!-- col-8 -->
           <div class="col-lg-4 mg-t-15 mg-sm-t-20 mg-lg-t-0">
-            <div class="card pd-20">
+            <!--<div class="card pd-20">
               <h6 class="tx-12 tx-uppercase tx-inverse tx-bold mg-b-15">Sales Report</h6>
               <div class="d-flex mg-b-10">
                 <div class="bd-r pd-r-10">
@@ -215,29 +218,24 @@
                   <label class="tx-12">This Month</label>
                   <p class="tx-lato tx-inverse tx-bold">72,067</p>
                 </div>
-              </div><!-- d-flex -->
+              </div>
               <div class="progress mg-b-10">
                 <div class="progress-bar wd-50p" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
               </div>
               <p class="tx-12 mg-b-0">Maecenas tempus, tellus eget condimentum rhoncus</p>
-            </div><!-- card -->
+            </div>-->
 
-            <ul class="list-group widget-list-group bg-info mg-t-20">
+            <ul class="list-group widget-list-group bg-info ">
+			<?php if($last_matchs){
+                            foreach ($last_matchs as $row){ ?>
               <li class="list-group-item rounded-top-0">
-                <p class="mg-b-0"><i class="fa fa-cube tx-white-7 mg-r-8"></i><strong class="tx-medium">Retina: 13.3-inch</strong> <span class="text-muted">Display</span></p>
+                <p class="mg-b-0"><i class="fa fa-cube tx-white-7 mg-r-8"></i><strong class="tx-medium"><?php echo $row->date; ?> : <?php echo $row->eq1; ?> - <?php echo $row->eq2; ?></strong> <span class="text-muted">(<?php echo $row->score_eq1 . " - " . $row->score_eq2; ?>)</span></p>
               </li>
-              <li class="list-group-item">
-                <p class="mg-b-0"><i class="fa fa-cube tx-white-7 mg-r-8"></i><strong class="tx-medium">Intel Iris Graphics 6100</strong> <span class="text-muted">Graphics</span></p>
-              </li>
-              <li class="list-group-item">
-                <p class="mg-b-0"><i class="fa fa-cube tx-white-7 mg-r-8"></i><strong class="tx-medium">500 GB</strong> <span class="text-muted">Flash Storage</span></p>
-              </li>
-              <li class="list-group-item">
-                <p class="mg-b-0"><i class="fa fa-cube tx-white-7 mg-r-8"></i><strong class="tx-medium">3.1 GHz Intel Core i7</strong> <span class="text-muted">Processor</span></p>
-              </li>
+			<?php } } ?>
+             <!--
               <li class="list-group-item rounded-bottom-0">
-                <p class="mg-b-0"><i class="fa fa-cube tx-white-7 mg-r-8"></i><strong class="tx-tx-medium">16 GB 1867 MHz DDR3</strong> <span class="text-muted">Memory</span></p>
-              </li>
+                <p class="mg-b-0"><i class="fa fa-cube tx-white-7 mg-r-8"></i><strong class="tx-tx-medium">15 Mars : Allemagne - Brésil</strong> <span class="text-muted">(NC)</span></p>
+              </li>-->
             </ul>
           </div><!-- col-4 -->
         </div><!-- row -->

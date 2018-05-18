@@ -39,6 +39,30 @@ Class Pronostics_model extends CI_Model
 		return false;
 	}
 	
+	public function getFiveLastPronos() {
+		$sql = 'SELECT pr.score_eq1, pr.score_eq2, eq.vainqueur, DATE_FORMAT(pr.dateheure, "%d %M à %H:%i") as dateheure, eq1.name as eq1, eq2.name as eq2, u.nom, u.id_fb FROM '. TABLE_PRONOSTICS .' pr 
+									LEFT JOIN '. TABLE_UTILISATEURS .' u ON u.id = pr.utilisateur_id 
+									LEFT JOIN '. TABLE_RENCONTRES .' r ON r.id = pr.rencontre_id 
+									LEFT JOIN '. TABLE_EQUIPES .' eq1 ON eq1.id = r.equipe_id1 
+									LEFT JOIN '. TABLE_EQUIPES .' eq ON eq.id = r.vainqueur_id  
+									LEFT JOIN '. TABLE_EQUIPES .' eq2 ON eq2.id = r.equipe_id2 ORDER BY pr.dateheure DESC LIMIT 5;';
+		//var_dump($sql); die;
+		$query = $this->db->query("SET lc_time_names = 'fr_FR'");
+		$query = $this->db->query('SELECT pr.score_eq1, pr.score_eq2, eq.name, DATE_FORMAT(pr.dateheure, "%d %M à %H:%i") as dateheure, eq1.name as eq1, eq2.name as eq2, u.nom, u.id_fb FROM '. TABLE_PRONOSTICS .' pr 
+									LEFT JOIN '. TABLE_UTILISATEURS .' u ON u.id = pr.utilisateur_id 
+									LEFT JOIN '. TABLE_RENCONTRES .' r ON r.id = pr.rencontre_id 
+									LEFT JOIN '. TABLE_EQUIPES .' eq1 ON eq1.id = r.equipe_id1 
+									LEFT JOIN '. TABLE_EQUIPES .' eq ON eq.id = pr.vainqueur_id  
+									LEFT JOIN '. TABLE_EQUIPES .' eq2 ON eq2.id = r.equipe_id2 ORDER BY pr.dateheure DESC LIMIT 5;');
+		
+		$row = $query->result();
+		if (isset($row))
+		{
+			return $row;
+		}
+		return false;
+	}
+	
 	public function countPronosticsDuJr() {
 		$this->db->from(TABLE_PRONOSTICS);
 		$this->db->where('dateheure >= CURDATE()');

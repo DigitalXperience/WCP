@@ -133,9 +133,9 @@ class Rencontres extends CI_Controller{
 						$data['alert'] = '<div class="alert alert-success alert-dismissable">
 								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 								<h4>	<i class="icon fa fa-check"></i> Bravo!</h4>
-								Scores de la rencontre mis à jour avec succès.
+								Scores de la rencontre mis à jour avec succès.</br>'.$s.'
 							  </div>';
-							  redirect("rencontres/liste/");
+							 // redirect("rencontres/liste/");
 					} else {
 					   $data['alert']='<div class="alert alert-danger alert-dismissable"> <button type="button" class="close" data-       dismiss="alert" aria-hidden="true">×</button>
 						<h4><i class="icon fa fa-ban"></i> Erreur !</h4> Problème survenu lors de l\'enregistrement de la nouvelle rencontre. </div>'; 

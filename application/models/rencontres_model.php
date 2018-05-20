@@ -80,8 +80,7 @@ Class Rencontres_model extends CI_Model
 		$this->load->database();
         $this->db->where('id', $tab['id']);
 		$this->db->update(TABLE_RENCONTRES, $tab);
-		$this->updatePointsRencontre($tab['id'], $score_eq1, $score_eq2);
-		return true;
+		return $this->updatePointsRencontre($tab['id'], $score_eq1, $score_eq2);
 	}
 	
 	public function updatePointsRencontre($id, $score_eq1, $score_eq2) {
@@ -94,6 +93,7 @@ Class Rencontres_model extends CI_Model
 					if($pro->score_eq1 == $score_eq1 && $pro->score_eq2 == $score_eq2) {
 						$this->db->where('id', $pro->id);
 						$this->db->update(TABLE_PRONOSTICS, array('pts_obtenus' => $params->pt_prono_score));
+						return $this->saveNotificationToUser($pro->id_fb, "Votre pronostique était bon! Bravo!!!");
 					}
 					else {
 						$this->db->where('id', $pro->id);
@@ -105,6 +105,33 @@ Class Rencontres_model extends CI_Model
 			}
 			return true;
 		} 
+	}
+	
+	public function saveNotificationToUser($id_fb, $msg) {
+		
+		return $this->db->insert(TABLE_NOTIFICATIONS_FB, array('id' => null,
+																'id_fb' => $id_fb,
+																'msg' => $msg,
+																'status' => 0
+																)
+								);
+		
+		/*$ch = curl_init(); 
+		
+        // set url 
+        curl_setopt($ch, CURLOPT_URL, "https://arcane-basin-34980.herokuapp.com/notifications.php?id_fb=".$id_fb."&msg=".$msg); 
+		curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)");
+		//curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, false)
+
+        //return the transfer as a string 
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+
+        // $output contains the output string 
+        $output = curl_exec($ch); 
+
+        // close curl resource to free up system resources 
+        curl_close($ch);     
+		*/
 	}
 	
 	public function addPointsToWinners($id_rencontre) {

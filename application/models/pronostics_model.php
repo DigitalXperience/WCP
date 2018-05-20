@@ -30,7 +30,9 @@ Class Pronostics_model extends CI_Model
 	}
 	
 	public function getAllPronosRencontre($id_rencontre) {
-		$query = $this->db->query('SELECT * FROM '. TABLE_PRONOSTICS .' WHERE rencontre_id = ' . $id_rencontre . ';');
+		$query = $this->db->query('SELECT pr.*, u.id_fb FROM '. TABLE_PRONOSTICS .' pr 
+									LEFT JOIN '. TABLE_UTILISATEURS .' u ON u.id = pr.utilisateur_id 
+									WHERE rencontre_id = ' . $id_rencontre . ';');
 		$row = $query->result();
 		if (isset($row))
 		{

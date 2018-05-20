@@ -90,3 +90,4 @@ defined('TABLE_RENCONTRES')		OR define('TABLE_RENCONTRES', 'rencontres');
 defined('TABLE_PRONOSTICS')		OR define('TABLE_PRONOSTICS', 'pronostics');
 defined('TABLE_UTILISATEURS')	OR define('TABLE_UTILISATEURS', 'utilisateurs');
 defined('TABLE_CONFIG')			OR define('TABLE_CONFIG', 'admin_config');
+defined('TABLE_NOTIFICATIONS_FB')			OR define('TABLE_NOTIFICATIONS_FB', 'notifications_fb');

@@ -89,22 +89,24 @@ Class Rencontres_model extends CI_Model
 		
 		if($pronos = $this->pronosctics->getAllPronosRencontre($id)) {
 			foreach($pronos as $pro) {
-				if($pro->score_eq1 && $pro->score_eq2) { // il a mis des pronosctiques score
-					if($pro->score_eq1 == $score_eq1 && $pro->score_eq2 == $score_eq2) {
+				if(!is_null($pro->score_eq1) || !is_null($pro->score_eq2) ) { // il a mis des pronosctiques score
+					if($pro->score_eq1 === $score_eq1 && $pro->score_eq2 === $score_eq2) {
 						$this->db->where('id', $pro->id);
 						$this->db->update(TABLE_PRONOSTICS, array('pts_obtenus' => $params->pt_prono_score));
-						return $this->saveNotificationToUser($pro->id_fb, "Votre pronostique était bon! Bravo!!!");
+						$this->saveNotificationToUser($pro->id_fb, "Votre pronostique était bon! Bravo!!!");
 					}
 					else {
 						$this->db->where('id', $pro->id);
 						$this->db->update(TABLE_PRONOSTICS, array('pts_obtenus' => 0));
 					}
-				} else { // Il a pro
+				} else { // Il a pronostiqué le vainqueur
 					
 				}
 			}
 			return true;
-		} 
+		} else {
+			return true;
+		}
 	}
 	
 	public function saveNotificationToUser($id_fb, $msg) {
@@ -137,6 +139,11 @@ Class Rencontres_model extends CI_Model
 	public function addPointsToWinners($id_rencontre) {
 		// D'abord xeux qui ont pronostiqué le bon vainqueur 
 		$sql = "";
+	}
+	
+	public function getNextMatch() {
+		$this->db->from(TABLE_RENCONTRES);
+		$this->db->where('date_heure >= CURDATE()');
 	}
 	
 	public function mis_en_avant($id) {

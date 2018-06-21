@@ -65,7 +65,7 @@
                   <a href="#" class="tx-gray-600 hover-info"><i class="icon ion-more tx-16 lh-0"></i></a>
                 </div><!-- d-flex -->
                 <h2 class="mg-b-5 tx-inverse tx-lato"><?php echo $today_pronos; ?></h2>
-                <p class="tx-12 mg-b-0">Pour un total de <?php echo $nb_pronostiqueurs; ?> pronostiqueurs</p>
+                <p class="tx-12 mg-b-0">Pour un total de <?php echo $nb_pronostiques; ?> pronostiques</p>
               </div>
             </div><!-- card -->
           </div><!-- col-4 -->

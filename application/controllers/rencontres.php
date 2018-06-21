@@ -138,7 +138,7 @@ class Rencontres extends CI_Controller{
 							 // redirect("rencontres/liste/");
 					} else {
 					   $data['alert']='<div class="alert alert-danger alert-dismissable"> <button type="button" class="close" data-       dismiss="alert" aria-hidden="true">×</button>
-						<h4><i class="icon fa fa-ban"></i> Erreur !</h4> Problème survenu lors de l\'enregistrement de la nouvelle rencontre. </div>'; 
+						<h4><i class="icon fa fa-ban"></i> Erreur !</h4> Problème survenu lors de l\'enregistrement de la nouvelle rencontre. <br />'.$s.' </div>'; 
 					}
 				}
 			}

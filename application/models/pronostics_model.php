@@ -4,6 +4,12 @@ Class Pronostics_model extends CI_Model
 
     public function getList($clause=null)
 	{
+		$tmpRequest = '';
+		if (!is_null($clause)) {
+			// test des valeurs de l'attribut recherché: soit rencontre, soit utilisateur
+			$tmpAttr = $clause['attr'] == 'rencontre' ? 'r.id' : 'u.id';
+			$tmpRequest = 'WHERE '. $tmpAttr . ' = \''. $clause['val'] .'\'';
+		}
 		$query = $this->db->query('
 			SELECT 
 				p.id id,
@@ -20,7 +26,8 @@ Class Pronostics_model extends CI_Model
 			LEFT JOIN '. TABLE_EQUIPES .' eq1 ON eq1.id = r.equipe_id1 
 			LEFT JOIN '. TABLE_EQUIPES .' eq2 ON eq2.id = r.equipe_id2 
 			LEFT JOIN '. TABLE_EQUIPES .' eq3 ON eq3.id = p.vainqueur_id 
-			LEFT JOIN '. TABLE_UTILISATEURS .' u ON u.id = p.utilisateur_id;');
+			LEFT JOIN '. TABLE_UTILISATEURS .' u ON u.id = p.utilisateur_id 
+			'.$tmpRequest.';');
 		$row = $query->result();
 		if (isset($row))
 		{

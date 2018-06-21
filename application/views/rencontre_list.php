@@ -64,24 +64,32 @@
               <thead>
                 <tr>
                   <th>#</th>
-                    <th>Equipe 1</th>
-                    <th>Equipe 2</th>
+                    <th>Rencontre</th>
                     <th>Date</th>
-                    <th>Score eq.1</th>
-                    <th>Score eq.2</th>
+                    <th>Score</th>
                     <th>Front</th>
                 </tr>
               </thead>
               <tbody>
                 <?php if($liste){
                             foreach ($liste as $row){
+                                $tmpRencontre = $row->equipe_1.' - '.$row->equipe_2;
                                 echo '<tr id="row-'.$row->id_rencontre.'">
                                         <td>'.$row->id_rencontre.'</td>
-                                        <td>'.$row->equipe_1.'</td>
-                                        <td>'.$row->equipe_2.'</td>
+                                        <td><a href="'. base_url().'index.php/pronostics/liste/rencontre/'.$row->id_rencontre.'" title="Liste des pronostics de la rencontre: '.$tmpRencontre.'">'.$tmpRencontre.'</a></td>
                                         <td>'.$row->date. ' à ' . $row->heure . '</td>
-                                        <td>'; if($row->score_eq1 == "") echo '<a href="' . base_url() . 'index.php/rencontres/updatescore/' . $row->id_rencontre . '">Ajouter</a>'; else echo $row->score_eq1;  echo '</td>
-                                        <td>'; if($row->score_eq2 == "") echo '<a href="' . base_url() . 'index.php/rencontres/updatescore/' . $row->id_rencontre . '">Ajouter</a>'; else echo $row->score_eq2;  echo '</td>
+                                        <td>'; 
+                                          if($row->score_eq1 == "") 
+                                            echo '<a href="' . base_url() . 'index.php/rencontres/updatescore/' . $row->id_rencontre . '">Ajouter</a>'; 
+                                          else 
+                                            echo $row->score_eq1;  
+                                          echo ' - '; 
+                                          if($row->score_eq2 == "") 
+                                            echo '<a href="' . base_url() . 'index.php/rencontres/updatescore/' . $row->id_rencontre . '">Ajouter</a>'; 
+                                          else 
+                                            echo $row->score_eq2;  
+                                          echo '
+                                        </td>
                                         <td><a href="' . base_url() . 'index.php/rencontres/en_avant/' . $row->id_rencontre . '">' . ($row->en_avant == '0' ? 'Non' : 'Oui') .'</a></td>
                                       </tr>';
                             }

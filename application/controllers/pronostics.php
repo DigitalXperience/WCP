@@ -16,13 +16,19 @@ class Pronostics extends CI_Controller{
 		
 	}
 
-	public function liste() {
+	public function liste($path = null, $id = null) {
 		if($this->session->userdata('logged_in'))
 		{
-			$session_data = $this->session->userdata('logged_in');
+			$session_data = $this->session->userdata('logged_in'); 
 			$data['name'] = $this->user->getInfo($session_data['id']);
 			$data['title'] = "Liste des pronostics";
-            $data['liste'] = $this->pronostics->getList();
+			// verification que le chemin de l'url correspond bien aux attentes
+			$tmpArray = array('utilisateur', 'rencontre');
+			$clause = null;
+			if (!is_null($path) && !is_null($id) && in_array($path, $tmpArray)) {
+				$clause = array('attr' => $path, 'val' => $id);
+			}
+            $data['liste'] = $this->pronostics->getList($clause);
 			$this->load->view('pronostic_list', $data);
 		}
 		else

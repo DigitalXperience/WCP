@@ -64,11 +64,9 @@
               <thead>
                 <tr>
                   <th>#</th>
+                    <th>Date/Heure</th>
                     <th>Rencontre</th>
-                    <th>Equipe 1</th>
-                    <th>Equipe 2</th>
-                    <th>Score eq.1</th>
-                    <th>Score eq.2</th>
+                    <th>Score</th>
                     <th>Utilisateur</th>
                     <th>Vainqueur</th>
                     <th>Date/Heure prono</th>
@@ -80,10 +78,8 @@
                                 echo '<tr id="row-'.$row->id.'">
                                         <td>'.$row->id.'</td>
                                         <td>'.$row->rencontre_date_heure.'</td>
-                                        <td>'.$row->equipe_1.'</td>
-                                        <td>'.$row->equipe_2.'</td>
-                                        <td>'.$row->score_eq1.'</td>
-                                        <td>'.$row->score_eq2.'</td>
+                                        <td>'.$row->equipe_1.' - '.$row->equipe_2.'</td>
+                                        <td>'.$row->score_eq1.' - '.$row->score_eq2.'</td>
                                         <td>'.$row->utilisateur_nom.'</td>
                                         <td>'.$row->vainqueur.'</td>
                                         <td>'.$row->date_heure.'</td>

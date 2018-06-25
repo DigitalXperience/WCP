@@ -336,7 +336,7 @@
                                         <td>'.$row->genre.'</td>
                                         <td>'.$row->numero.'</td>
                                         <td>'.$row->email.'</td>
-                                        <td>'.$row->pts.'</td>
+                                        <td>'.$row->pts.'</td> 
                                       </tr>';
                             }
                     } ?>

@@ -70,6 +70,7 @@
                     <th>Utilisateur</th>
                     <th>Vainqueur</th>
                     <th>Date/Heure prono</th>
+                    <th>Nb points</th>
                 </tr>
               </thead>
               <tbody>
@@ -83,6 +84,7 @@
                                         <td>'.$row->utilisateur_nom.'</td>
                                         <td>'.$row->vainqueur.'</td>
                                         <td>'.$row->date_heure.'</td>
+                                        <td>'.$row->pts_obtenus.'</td>
                                       </tr>';
                             }
                     } ?>

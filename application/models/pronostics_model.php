@@ -20,7 +20,8 @@ Class Pronostics_model extends CI_Model
 				p.score_eq2 score_eq2,
 				u.nom utilisateur_nom,
 				eq3.name vainqueur,
-				p.dateheure date_heure
+				p.dateheure date_heure,
+				p.pts_obtenus pts_obtenus 
 			FROM '. TABLE_PRONOSTICS .' p
 			LEFT JOIN '. TABLE_RENCONTRES .' r ON r.id = p.rencontre_id 
 			LEFT JOIN '. TABLE_EQUIPES .' eq1 ON eq1.id = r.equipe_id1 

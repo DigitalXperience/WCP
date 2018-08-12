@@ -4,6 +4,7 @@ Class Rencontres_model extends CI_Model
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->model('competitions_model','competitions');
 		$this->load->model('pronostics_model','pronosctics');
 		$this->load->model('admin_config_model','admin_config');
 	}
@@ -22,7 +23,8 @@ Class Rencontres_model extends CI_Model
 				en_avant
 			FROM ". TABLE_RENCONTRES ." r 
 			JOIN ". TABLE_EQUIPES ." eq1 ON eq1.id = r.equipe_id1 
-			JOIN ". TABLE_EQUIPES ." eq2 ON eq2.id = r.equipe_id2;");
+			JOIN ". TABLE_EQUIPES ." eq2 ON eq2.id = r.equipe_id2
+			WHERE r.id_competition = " . $this->competitions->getActiveCompetition());
 		$row = $query->result();
 		if (isset($row))
 		{
@@ -67,6 +69,7 @@ Class Rencontres_model extends CI_Model
 	}
 
 	public function newRencontre($tab) {
+		$tab['id_competition'] =  $this->competitions->getActiveCompetition();
 		return $this->db->insert(TABLE_RENCONTRES, $tab);
 	}
 

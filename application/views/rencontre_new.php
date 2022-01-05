@@ -77,6 +77,19 @@
 			  <div class="row mg-b-25">
 				<div class="col-lg-4">
 					<div class="form-group mg-b-10-force">
+					  <label class="form-control-label">Stade : <span class="tx-danger">*</span></label>
+					  <select class="form-control select2" name="id_stade" data-placeholder="S&eacute;lectionnez le stade">
+						<option label="Sélectionnez le stade"></option>
+							<?php foreach ($lstStades as $stade) { 
+								echo "<option value='".$stade->id."'>".$stade->nom."</option>";           	
+							} ?>
+					  </select>
+					</div>
+              </div>
+			  </div>
+			  <div class="row mg-b-25">
+				<div class="col-lg-4">
+					<div class="form-group mg-b-10-force">
 					  <label class="form-control-label">Equipe 1 : <span class="tx-danger">*</span></label>
 					  <select class="form-control select2" name="equipe_id1" data-placeholder="Sélectionnez l'équipe 1">
 						<option label="Sélectionnez l'équipe 1"></option>

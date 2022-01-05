@@ -181,6 +181,19 @@ INSERT INTO `pronostics` (`id`, `rencontre_id`, `utilisateur_id`, `score_eq1`, `
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `stades`
+--
+
+CREATE TABLE `stades` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `image` varchar(500) COLLATE utf8_unicode_ci DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `rencontres`
 --
 
@@ -194,7 +207,8 @@ CREATE TABLE `rencontres` (
   `score_ouverture` int(11) DEFAULT NULL,
   `score_min` enum('0-15','15-30','30-45','45-60','60-75','75-90') DEFAULT NULL,
   `en_avant` int(1) NOT NULL DEFAULT 0,
-  `id_competition` int(11) NOT NULL
+  `id_competition` int(11) NOT NULL,
+  `id_stade` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

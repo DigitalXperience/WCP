@@ -86,6 +86,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 // defined tables
 defined('TABLE_COMPETITIONS')	OR define('TABLE_COMPETITIONS', 'competitions');
+defined('TABLE_STADES')			OR define('TABLE_STADES', 'stades');
 defined('TABLE_EQUIPES')		OR define('TABLE_EQUIPES', 'equipes');
 defined('TABLE_RENCONTRES')		OR define('TABLE_RENCONTRES', 'rencontres');
 defined('TABLE_PRONOSTICS')		OR define('TABLE_PRONOSTICS', 'pronostics');

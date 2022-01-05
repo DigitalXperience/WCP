@@ -47,9 +47,6 @@
     </section>
   </aside>-->
   
-  
-  
-  
   <ul class="nav am-sideleft-menu">
             <li class="nav-item">
               <a href="<?php echo base_url(); ?>index.php/dashboard" class="nav-link">
@@ -86,6 +83,16 @@
                 <li class="nav-item"><a href="<?php echo base_url(); ?>index.php/equipes/liste" class="nav-link">Lister les équipes</a></li>
               </ul>
             </li><!-- nav-item -->
+      <li class="nav-item">
+              <a href="" class="nav-link with-sub">
+                <i class="icon ion-ios-filing-outline"></i>
+                <span>Gestion des stades</span>
+              </a>
+        <ul class="nav-sub">
+                <li class="nav-item"><a href="<?php echo base_url(); ?>index.php/stades/ajouter" class="nav-link">Ajouter un stade</a></li>
+                <li class="nav-item"><a href="<?php echo base_url(); ?>index.php/stades/liste" class="nav-link">Lister les stades</a></li>
+              </ul>
+      </li><!-- nav-item -->
             <li class="nav-item">
               <a href="" class="nav-link with-sub">
                 <i class="icon ion-ios-list-outline"></i>

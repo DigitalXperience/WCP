@@ -9,6 +9,7 @@ class Rencontres extends CI_Controller{
 		$this->load->model('rencontres_model','rencontres');
 		$this->load->model('equipes_model', 'equipes');
 		$this->load->model('competitions_model', 'competitions');
+		$this->load->model('stades_model', 'stades');
 		$this->load->model('admin_config_model','admin_config');
 		//$this->load->model('log_model','logs');
 	}
@@ -104,6 +105,7 @@ class Rencontres extends CI_Controller{
 			$data['title'] = "Ajouter une nouvelle rencontre";
 			$data['lstEquipes'] = $this->equipes->getList();
 			$data['lstCompetitions'] = $this->competitions->getList();
+			$data['lstStades'] = $this->stades->getList();
 			$this->load->view('rencontre_new', $data);
 		}
 		else

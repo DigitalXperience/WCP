@@ -48,6 +48,7 @@
       </div><!-- tab-content -->
   </div><!-- am-sideleft -->
   
+  
     <div class="am-pagetitle">
       <h5 class="am-title"><?php echo $title; ?></h5>
     </div><!-- am-pagetitle -->
@@ -57,36 +58,23 @@
 
         <div class="card pd-20 pd-sm-40">
           <h6 class="card-body-title"><?php echo $title; ?></h6>
-          <p class="mg-b-20 mg-sm-b-30"></p>
+          <!--<p class="mg-b-20 mg-sm-b-30">Searching, ordering and paging goodness will be immediately added to the table, as shown in this example.</p>-->
 
           <div class="table-wrapper">
             <table id="datatable1" class="table display responsive nowrap">
               <thead>
                 <tr>
                   <th>#</th>
-					         <th>Comp&eacute;tition</th>
-                   <th>Stade</th>
-                    <th>Equipe 1</th>
-                    <th>Equipe 2</th>
-                    <th>Date</th>
-                    <th>Score eq.1</th>
-                    <th>Score eq.2</th>
-                    <th>Front</th>
+                    <th>Nom</th>
+                
                 </tr>
               </thead>
               <tbody>
                 <?php if($liste){
                             foreach ($liste as $row){
-                                echo '<tr id="row-'.$row->id_rencontre.'">
-                    										<td>'.$row->id_rencontre.'</td>
-                    										<td>'.$row->competition_nom.'</td>
-                                        <td>'.$row->stade_nom.'</td>
-                                        <td>'.$row->equipe_1.'</td>
-                                        <td>'.$row->equipe_2.'</td>
-                                        <td>'.$row->date. ' à ' . $row->heure . '</td>
-                                        <td>'; if($row->score_eq1 == "") echo '<a href="' . base_url() . 'index.php/rencontres/updatescore/' . $row->id_rencontre . '">Ajouter</a>'; else echo $row->score_eq1;  echo '</td>
-                                        <td>'; if($row->score_eq2 == "") echo '<a href="' . base_url() . 'index.php/rencontres/updatescore/' . $row->id_rencontre . '">Ajouter</a>'; else echo $row->score_eq2;  echo '</td>
-                                        <td><a href="' . base_url() . 'index.php/rencontres/en_avant/' . $row->id_rencontre . '">' . ($row->en_avant == '0' ? 'Non' : 'Oui') .'</a></td>
+                                echo '<tr id="row-'.$row->id.'">
+                                        <td>'.$row->id.'</td>
+                                        <td>'.$row->nom.'</td>
                                       </tr>';
                             }
                     } ?>
@@ -96,7 +84,7 @@
           </div><!-- table-wrapper -->
         </div><!-- card -->
 
-        </div><!-- am-pagebody -->
+      </div><!-- am-pagebody -->
       <div class="am-footer">
         <span>Copyright &copy;. All Rights Reserved. 33 Export Dashboard.</span>
         <span>Created by: Digital Experience, Sarl.</span>
@@ -111,7 +99,6 @@
     <script src="<?php echo base_url(); ?>assets/lib/highlightjs/highlight.pack.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/datatables/jquery.dataTables.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/datatables-responsive/dataTables.responsive.js"></script>
-    <script src="<?php echo base_url(); ?>assets/lib/select2/js/select2.min.js"></script>
 
     <script src="<?php echo base_url(); ?>assets/js/amanda.js"></script>
     <script>
@@ -126,9 +113,6 @@
             lengthMenu: '_MENU_ items/page',
           }
         });
-
-        // Select2
-        $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
 
       });
     </script>

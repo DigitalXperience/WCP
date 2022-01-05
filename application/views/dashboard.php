@@ -65,7 +65,7 @@
                   <a href="#" class="tx-gray-600 hover-info"><i class="icon ion-more tx-16 lh-0"></i></a>
                 </div><!-- d-flex -->
                 <h2 class="mg-b-5 tx-inverse tx-lato"><?php echo $today_pronos; ?></h2>
-                <p class="tx-12 mg-b-0">Pour un total de <?php echo $nb_pronostiques; ?> pronostiques</p>
+                <p class="tx-12 mg-b-0">Pour un total de <?php echo $nb_pronostiqueurs; ?> pronostiqueurs</p>
               </div>
             </div><!-- card -->
           </div><!-- col-4 -->
@@ -117,7 +117,13 @@
                             foreach ($pronostiques as $row){ ?>
                     <tr>
                       <td class="pd-l-20 tx-center">
-                        <img src="https://graph.facebook.com/<?php echo $row->id_fb; ?>/picture" class="wd-36 rounded-circle" alt="Image">
+					  <?php if($row->oauth_provider == 'facebook') { ?>
+                        <img src="https://graph.facebook.com/<?php echo $row->oauth_uid; ?>/picture" class="wd-36 rounded-circle" alt="Image">
+					  <?php } elseif($row->oauth_provider == 'google') { ?>
+                        <img src="<?php echo $row->picture_url; ?>" class="wd-36 rounded-circle" alt="Image">
+					  <?php } else { ?>
+                        <img src="https://www.33export-foot.com/img/pp.png" class="wd-36 rounded-circle" alt="Image">
+					  <?php } ?>
                       </td>
                       <td>
                         <a href="" class="tx-inverse tx-14 tx-medium d-block"><?php echo $row->nom; ?></a>
@@ -248,13 +254,11 @@
     </div><!-- am-mainpanel -->
 
     <script src="<?php echo base_url(); ?>assets/lib/jquery/jquery.js"></script>
-    <script src="<?php echo base_url(); ?>assets/lib/popper.js/popper.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/bootstrap/bootstrap.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/jquery-toggles/toggles.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/d3/d3.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/rickshaw/rickshaw.min.js"></script>
-    <script src="http://maps.google.com/maps/api/js?key=AIzaSyAEt_DBLTknLexNbTVwbXyq2HSf2UbRBU8"></script>
     <script src="<?php echo base_url(); ?>assets/lib/gmaps/gmaps.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/Flot/jquery.flot.js"></script>
     <script src="<?php echo base_url(); ?>assets/lib/Flot/jquery.flot.pie.js"></script>

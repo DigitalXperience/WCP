@@ -76,8 +76,31 @@
 					</div>
               </div>
 			  <div class="col-lg-4">
-					
-				</div><!-- col -->
+				<div class="form-group mg-b-10-force">
+					  <label class="form-control-label">Equipe qui ouvre le score : <span class="tx-danger">*</span></label>
+					  <select class="form-control select2" name="score_ouverture" data-placeholder="Sélectionnez l'équipe 2">
+						<option label="Sélectionnez l'équipe"></option>
+							<option value="<?php echo $current->id1; ?>"><?php echo $current->equipe_1; ?></option>;           	
+							<option value="<?php echo $current->id2; ?>"><?php echo $current->equipe_2; ?></option>;           	
+							
+					  </select>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="form-group mg-b-10-force">
+					  <label class="form-control-label">Minute d'ouverture du score : <span class="tx-danger">*</span></label>
+					  <select class="form-control select2" name="score_min" data-placeholder="Sélectionnez l'intervalle">
+						<option label="Sélectionnez l'intervalle"></option>
+							<option value="0">-</option>
+							<option value="0-15" <?php if($current->score_min == '0-15') echo 'selected="selected"'; ?> >0 - 15</option>
+							<option value="15-30" <?php if($current->score_min == '15-30') echo 'selected="selected"'; ?> >15 - 30</option>
+							<option value="30-45" <?php if($current->score_min == '30-45') echo 'selected="selected"'; ?> >30 - 45</option>
+							<option value="45-60" <?php if($current->score_min == '45-60') echo 'selected="selected"'; ?> >45 - 60</option>
+							<option value="60-75" <?php if($current->score_min == '60-75') echo 'selected="selected"'; ?> >60 - 75</option>
+							<option value="75-90" <?php if($current->score_min == '75-90') echo 'selected="selected"'; ?> >75 - 90</option>
+					  </select>
+				</div>
+			</div><!-- col -->
 				
 			  </div>
 			  

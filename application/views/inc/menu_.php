@@ -66,16 +66,6 @@
                 <li class="nav-item"><a href="form-elements.html" class="nav-link">Gestion des points</a></li>
               </ul>
             </li><!-- nav-item -->
-			<li class="nav-item">
-              <a href="" class="nav-link with-sub">
-                <i class="icon ion-ios-filing-outline"></i>
-                <span>Gestion des compétitions</span>
-              </a>
-			  <ul class="nav-sub">
-                <li class="nav-item"><a href="<?php echo base_url(); ?>index.php/competitions/ajouter" class="nav-link">Ajouter une compétion</a></li>
-                <li class="nav-item"><a href="<?php echo base_url(); ?>index.php/competitions/liste" class="nav-link">Lister les compétitions</a></li>
-              </ul>
-			</li><!-- nav-item -->
             <li class="nav-item">
               <a href="" class="nav-link with-sub">
                 <i class="icon ion-ios-filing-outline"></i>

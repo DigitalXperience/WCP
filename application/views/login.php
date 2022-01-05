@@ -33,16 +33,16 @@
           </div>
 		  
           <div class="col-lg-7">
-            <form class=""><h5 id="mtsg" class="tx-gray-800 mg-b-25">Connexion</h5>
+            <form name="form" id="form" action="<?php echo base_url(); ?>verifylogin/" class=""><h5 id="mtsg" class="tx-gray-800 mg-b-25">Connexion</h5>
 
             <div class="form-group">
               <label class="form-control-label">Nom d'utilisateur :</label>
-              <input type="text" id="username" name="email" autocomplete="false" class="form-control" placeholder="Entrer votre nom d'utilisateur">
+              <input type="text" id="username" name="username" autocomplete="false" class="form-control" placeholder="Entrer votre nom d'utilisateur">
             </div><!-- form-group -->
 
             <div class="form-group">
               <label class="form-control-label">Mot de passe :</label>
-              <input type="password" id="password" autocomplete="false" class="form-control" placeholder="Entrer votre mot de passe">
+              <input type="password" id="password" name="username" autocomplete="false" class="form-control" placeholder="Entrer votre mot de passe">
             </div><!-- form-group -->
 
             <div class="form-group mg-b-20"><a href="">Reinitialiser mot de passe</a></div>
@@ -80,10 +80,10 @@ $("#username, #password").keyup(function(event){
 		$('form').fadeOut(500);
 		$('.wrapper').addClass('form-success');
 		$.post( "verifylogin", { username: login, password: password }).done(function( data ) {
-			//alert( "Data Loaded: " + data );
+			alert( "Data Loaded: " + data );
 			if(data != 'false') {
 				$('#logo').fadeIn(500);
-				setTimeout(function(){
+				setTimeout(function(){ //alert('verify login success!');
 					$(location).attr('href', '<?php echo base_url(); ?>index.php/dashboard');
 					return false;
 				}, 2000);

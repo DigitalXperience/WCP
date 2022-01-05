@@ -4,7 +4,6 @@ Class Rencontres_model extends CI_Model
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('competitions_model','competitions');
 		$this->load->model('pronostics_model','pronosctics');
 		$this->load->model('admin_config_model','admin_config');
 	}
@@ -20,11 +19,13 @@ Class Rencontres_model extends CI_Model
 				score_eq2,
 				DATE_FORMAT(date_heure, '%d/%m/%Y') as date,
 				DATE_FORMAT(date_heure, '%k:%i') as heure,
-				en_avant
+				en_avant,
+				c.nom competition_nom,
+				c.id competition_id
 			FROM ". TABLE_RENCONTRES ." r 
+			JOIN ". TABLE_COMPETITIONS ." c ON c.id = r.id_competition 
 			JOIN ". TABLE_EQUIPES ." eq1 ON eq1.id = r.equipe_id1 
-			JOIN ". TABLE_EQUIPES ." eq2 ON eq2.id = r.equipe_id2
-			WHERE r.id_competition = " . $this->competitions->getActiveCompetition());
+			JOIN ". TABLE_EQUIPES ." eq2 ON eq2.id = r.equipe_id2;");
 		$row = $query->result();
 		if (isset($row))
 		{
@@ -52,10 +53,10 @@ Class Rencontres_model extends CI_Model
 		$query = $this->db->query('
 			SELECT 
 				r.id id_rencontre,
-				eq1.name equipe_1,
-				eq2.name equipe_2,
+				eq1.name equipe_1, eq1.id id1,
+				eq2.name equipe_2, eq2.id id2,
 				score_eq1,
-				score_eq2,
+				score_eq2, score_ouverture, score_min, 
 				date_heure,
 				en_avant
 			FROM '. TABLE_RENCONTRES .' r 
@@ -69,7 +70,6 @@ Class Rencontres_model extends CI_Model
 	}
 
 	public function newRencontre($tab) {
-		$tab['id_competition'] =  $this->competitions->getActiveCompetition();
 		return $this->db->insert(TABLE_RENCONTRES, $tab);
 	}
 
@@ -83,27 +83,50 @@ Class Rencontres_model extends CI_Model
 		$this->load->database();
         $this->db->where('id', $tab['id']);
 		$this->db->update(TABLE_RENCONTRES, $tab);
-		return $this->updatePointsRencontre($tab['id'], $score_eq1, $score_eq2);
+		return $this->updatePointsRencontre($tab['id'], $score_eq1, $score_eq2, $tab['score_ouverture'], $tab['score_min']);
 	}
 	
-	public function updatePointsRencontre($id, $score_eq1, $score_eq2) {
+	public function updatePointsRencontre($id, $score_eq1, $score_eq2, $score_ouverture, $score_min) {
 		
 		$params = $this->admin_config->get();
+		//echo "<pre>"; var_dump($params); die;
 		
 		if($pronos = $this->pronosctics->getAllPronosRencontre($id)) {
 			foreach($pronos as $pro) {
+				$pts = 0;
 				if(!is_null($pro->score_eq1) || !is_null($pro->score_eq2) ) { // il a mis des pronosctiques score
-					if($pro->score_eq1 === $score_eq1 && $pro->score_eq2 === $score_eq2) {
+					if($pro->score_eq1 == $score_eq1 && $pro->score_eq2 == $score_eq2) { // Il a pronostiqué le bon score
 						$this->db->where('id', $pro->id);
 						$this->db->update(TABLE_PRONOSTICS, array('pts_obtenus' => $params->pt_prono_score));
-						$this->saveNotificationToUser($pro->id_fb, "Votre pronostique était bon! Bravo!!!");
+						$this->saveNotificationToUser($pro->utilisateur_id, "Votre pronostique était bon! Bravo!!!");
+						$pts = $params->pt_prono_score;
 					}
-					else {
+					else { // Son pronostic est incorrect
 						$this->db->where('id', $pro->id);
 						$this->db->update(TABLE_PRONOSTICS, array('pts_obtenus' => 0));
 					}
 				} else { // Il a pronostiqué le vainqueur
 					
+				}
+				
+				if($pro->score_ouverture) { // Il a pronostiqué celui qui ouvre le score
+					if($pro->score_ouverture == $score_ouverture) {
+						$pts = $pts + $params->pt_prono_premier_buteur;
+						$this->db->where('id', $pro->id);
+						$this->db->update(TABLE_PRONOSTICS, array('pts_obtenus' => $pts));
+					} else {
+						
+					}
+				}
+				
+				if($pro->score_min) { // Il a pronostiqué l'intervalle de la minute d'ouverture du score
+					if($pro->score_min == $score_min) {
+						$pts = $pts + $params->pt_prono_ouverture_score;
+						$this->db->where('id', $pro->id);
+						$this->db->update(TABLE_PRONOSTICS, array('pts_obtenus' => $pts));
+					} else {
+						
+					}
 				}
 			}
 			return true;
@@ -112,10 +135,10 @@ Class Rencontres_model extends CI_Model
 		}
 	}
 	
-	public function saveNotificationToUser($id_fb, $msg) {
+	public function saveNotificationToUser($oauth_uid, $msg) {
 		
 		return $this->db->insert(TABLE_NOTIFICATIONS_FB, array('id' => null,
-																'id_fb' => $id_fb,
+																'utilisateur_id' => $oauth_uid,
 																'msg' => $msg,
 																'status' => 0
 																)
@@ -124,7 +147,7 @@ Class Rencontres_model extends CI_Model
 		/*$ch = curl_init(); 
 		
         // set url 
-        curl_setopt($ch, CURLOPT_URL, "https://arcane-basin-34980.herokuapp.com/notifications.php?id_fb=".$id_fb."&msg=".$msg); 
+        curl_setopt($ch, CURLOPT_URL, "https://arcane-basin-34980.herokuapp.com/notifications.php?oauth_uid=".$oauth_uid."&msg=".$msg); 
 		curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)");
 		//curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, false)
 
@@ -142,11 +165,6 @@ Class Rencontres_model extends CI_Model
 	public function addPointsToWinners($id_rencontre) {
 		// D'abord xeux qui ont pronostiqué le bon vainqueur 
 		$sql = "";
-	}
-	
-	public function getNextMatch() {
-		$this->db->from(TABLE_RENCONTRES);
-		$this->db->where('date_heure >= CURDATE()');
 	}
 	
 	public function mis_en_avant($id) {

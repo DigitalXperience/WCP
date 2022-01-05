@@ -4,12 +4,6 @@ Class Pronostics_model extends CI_Model
 
     public function getList($clause=null)
 	{
-		$tmpRequest = '';
-		if (!is_null($clause)) {
-			// test des valeurs de l'attribut recherché: soit rencontre, soit utilisateur
-			$tmpAttr = $clause['attr'] == 'rencontre' ? 'r.id' : 'u.id';
-			$tmpRequest = 'WHERE '. $tmpAttr . ' = \''. $clause['val'] .'\'';
-		}
 		$query = $this->db->query('
 			SELECT 
 				p.id id,
@@ -20,15 +14,13 @@ Class Pronostics_model extends CI_Model
 				p.score_eq2 score_eq2,
 				u.nom utilisateur_nom,
 				eq3.name vainqueur,
-				p.dateheure date_heure,
-				p.pts_obtenus pts_obtenus 
+				p.dateheure date_heure
 			FROM '. TABLE_PRONOSTICS .' p
 			LEFT JOIN '. TABLE_RENCONTRES .' r ON r.id = p.rencontre_id 
 			LEFT JOIN '. TABLE_EQUIPES .' eq1 ON eq1.id = r.equipe_id1 
 			LEFT JOIN '. TABLE_EQUIPES .' eq2 ON eq2.id = r.equipe_id2 
 			LEFT JOIN '. TABLE_EQUIPES .' eq3 ON eq3.id = p.vainqueur_id 
-			LEFT JOIN '. TABLE_UTILISATEURS .' u ON u.id = p.utilisateur_id 
-			'.$tmpRequest.';');
+			LEFT JOIN '. TABLE_UTILISATEURS .' u ON u.id = p.utilisateur_id;');
 		$row = $query->result();
 		if (isset($row))
 		{
@@ -38,7 +30,7 @@ Class Pronostics_model extends CI_Model
 	}
 	
 	public function getAllPronosRencontre($id_rencontre) {
-		$query = $this->db->query('SELECT pr.*, u.id_fb FROM '. TABLE_PRONOSTICS .' pr 
+		$query = $this->db->query('SELECT pr.*, u.oauth_uid FROM '. TABLE_PRONOSTICS .' pr 
 									LEFT JOIN '. TABLE_UTILISATEURS .' u ON u.id = pr.utilisateur_id 
 									WHERE rencontre_id = ' . $id_rencontre . ';');
 		$row = $query->result();
@@ -50,7 +42,7 @@ Class Pronostics_model extends CI_Model
 	}
 	
 	public function getFiveLastPronos() {
-		$sql = 'SELECT pr.score_eq1, pr.score_eq2, eq.vainqueur, DATE_FORMAT(pr.dateheure, "%d %M à %H:%i") as dateheure, eq1.name as eq1, eq2.name as eq2, u.nom, u.id_fb FROM '. TABLE_PRONOSTICS .' pr 
+		$sql = 'SELECT pr.score_eq1, pr.score_eq2, eq.vainqueur, DATE_FORMAT(pr.dateheure, "%d %M à %H:%i") as dateheure, eq1.name as eq1, eq2.name as eq2, u.nom, u.oauth_uid FROM '. TABLE_PRONOSTICS .' pr 
 									LEFT JOIN '. TABLE_UTILISATEURS .' u ON u.id = pr.utilisateur_id 
 									LEFT JOIN '. TABLE_RENCONTRES .' r ON r.id = pr.rencontre_id 
 									LEFT JOIN '. TABLE_EQUIPES .' eq1 ON eq1.id = r.equipe_id1 
@@ -58,12 +50,12 @@ Class Pronostics_model extends CI_Model
 									LEFT JOIN '. TABLE_EQUIPES .' eq2 ON eq2.id = r.equipe_id2 ORDER BY pr.dateheure DESC LIMIT 5;';
 		//var_dump($sql); die;
 		$query = $this->db->query("SET lc_time_names = 'fr_FR'");
-		$query = $this->db->query('SELECT pr.score_eq1, pr.score_eq2, eq.name, DATE_FORMAT(pr.dateheure, "%d %M à %H:%i") as dateheure, eq1.name as eq1, eq2.name as eq2, u.nom, u.id_fb FROM '. TABLE_PRONOSTICS .' pr 
+		$query = $this->db->query('SELECT pr.score_eq1, pr.score_eq2, eq.name, DATE_FORMAT(pr.dateheure, "%d %M à %H:%i") as dateheure, eq1.name as eq1, eq2.name as eq2, u.nom, u.oauth_uid, u.oauth_provider, u.picture_url FROM '. TABLE_PRONOSTICS .' pr 
 									LEFT JOIN '. TABLE_UTILISATEURS .' u ON u.id = pr.utilisateur_id 
 									LEFT JOIN '. TABLE_RENCONTRES .' r ON r.id = pr.rencontre_id 
 									LEFT JOIN '. TABLE_EQUIPES .' eq1 ON eq1.id = r.equipe_id1 
 									LEFT JOIN '. TABLE_EQUIPES .' eq ON eq.id = pr.vainqueur_id  
-									LEFT JOIN '. TABLE_EQUIPES .' eq2 ON eq2.id = r.equipe_id2 ORDER BY pr.dateheure DESC LIMIT 5;');
+									LEFT JOIN '. TABLE_EQUIPES .' eq2 ON eq2.id = r.equipe_id2 ORDER BY pr.dateheure DESC LIMIT 10;');
 		
 		$row = $query->result();
 		if (isset($row))
@@ -81,10 +73,6 @@ Class Pronostics_model extends CI_Model
 	
 	public function countPronostiqueurs() {
 		return $this->db->count_all(TABLE_UTILISATEURS);
-	}
-	
-	public function countPronostiques() {
-		return $this->db->count_all(TABLE_PRONOSTICS);
 	}
 	
 	public function countPronostiqueursInactifs() {

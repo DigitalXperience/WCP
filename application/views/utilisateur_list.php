@@ -322,9 +322,9 @@
                   <th>#</th>
                     <th>Nom</th>
                     <th>Genre</th>
+                    <th>Date de naissance</th>
                     <th>Numéro</th>
-                    <th>Adresse mail</th>
-                    <th>Points</th>
+                    <th>Mode de pronostics</th>
                 </tr>
               </thead>
               <tbody>
@@ -332,11 +332,11 @@
                             foreach ($liste as $row){
                                 echo '<tr id="row-'.$row->id.'">
                                         <td>'.$row->id.'</td>
-                                        <td><a href="'. base_url().'index.php/pronostics/liste/utilisateur/'.$row->id.'" title="Liste de tous les pronostics de '.$row->nom.'">'.$row->nom.'</a></td>
+                                        <td>'.$row->nom.'</td>
                                         <td>'.$row->genre.'</td>
+                                        <td>'.$row->date_naissance.'</td>
                                         <td>'.$row->numero.'</td>
-                                        <td>'.$row->email.'</td>
-                                        <td>'.$row->pts.'</td> 
+                                        <td>'.($row->mode_prono == '0' ? 'Mode 1' : 'Mode 2') .'</td>
                                       </tr>';
                             }
                     } ?>

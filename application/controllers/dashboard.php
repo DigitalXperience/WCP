@@ -10,17 +10,20 @@ class Dashboard extends CI_Controller{
 		$this->load->model('log_model','logs');
 		$this->load->model('pronostics_model','pronostics');
 		$this->load->model('rencontres_model','rencontres');
+		$this->load->library('session');
 	}
 	
 	public function index()
-	{	if($this->session->userdata('logged_in'))
+	{	
+		//var_dump($this->session->userdata('logged_in')); die;
+		//var_dump($this->session->userdata()); die;
+		if($this->session->userdata('logged_in'))
 		{
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
 			$data['nbusers'] = $this->user->getTotal();
 			$data['today_pronos'] = $this->pronostics->countPronosticsDuJr();
 			$data['nb_pronostiqueurs'] = $this->pronostics->countPronostiqueurs();
-			$data['nb_pronostiques'] = $this->pronostics->countPronostiques();
 			$data['pronostiques'] = $this->pronostics->getFiveLastPronos();
 			$data['nb_pronostiqueurs_inactifs'] = $this->pronostics->countPronostiqueursInactifs();
 			$data['today_matchs'] = $this->rencontres->countRencontresDuJr();

@@ -70,15 +70,48 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
+// database access
+//$url = getenv('JAWSDB_URL');
+
+//$dbparts = parse_url($url);
+
+//$hostname = $dbparts['host'];
+//$username = $dbparts['user'];
+//$password = $dbparts['pass'];
+//$database = ltrim($dbparts['path'],'/');
+
 $active_group = 'default';
 $query_builder = TRUE;
 
+/*
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+    'hostname' => 'arfo8ynm6olw6vpn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+	'username' => 'icu3pqeqs6ujor7y',
+	'password' => 'x1tagqagxfcpwpwf',
+	'database' => 'y9q3krafta1a5aq6',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => TRUE,
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);*/
+
+$db['default'] = array(
+	'dsn'	=> '',
+    'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
-	'database' => 'brasserie_prono',
+	'database' => 'exportfoot_can2022',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

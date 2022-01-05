@@ -66,7 +66,8 @@
                 <tr>
                   <th>#</th>
                     <th>Nom</th>
-                    <th>Drapeau</th>
+                    <th>Date de d&eacute;but</th>
+					<th>Date de fin</th>
                 </tr>
               </thead>
               <tbody>
@@ -74,8 +75,9 @@
                             foreach ($liste as $row){
                                 echo '<tr id="row-'.$row->id.'">
                                         <td>'.$row->id.'</td>
-                                        <td>'.$row->name.'</td>
-                                        <td><img src=\''.$row->flag.'\' width="50" /></td>
+                                        <td>'.$row->nom.'</td>
+                                        <td>'.$row->date_heure_debut.'</td>
+										<td>'.$row->date_heure_fin.'</td>
                                       </tr>';
                             }
                     } ?>

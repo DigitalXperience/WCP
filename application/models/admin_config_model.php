@@ -12,6 +12,8 @@ Class Admin_config_model extends CI_Model
 			$obj = new stdClass;
 			$obj->pt_prono_issue = $row[0]->valeur;
 			$obj->pt_prono_score = $row[1]->valeur;
+			$obj->pt_prono_ouverture_score = $row[2]->valeur;
+			$obj->pt_prono_premier_buteur = $row[3]->valeur;
 			return $obj;
 		}
 		

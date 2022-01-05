@@ -80,7 +80,7 @@ $("#username, #password").keyup(function(event){
 		$('form').fadeOut(500);
 		$('.wrapper').addClass('form-success');
 		$.post( "verifylogin", { username: login, password: password }).done(function( data ) {
-			alert( "Data Loaded: " + data );
+			//alert( "Data Loaded: " + data );
 			if(data != 'false') {
 				$('#logo').fadeIn(500);
 				setTimeout(function(){ //alert('verify login success!');

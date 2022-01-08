@@ -191,6 +191,8 @@ CREATE TABLE `stades` (
   `image` varchar(500) COLLATE utf8_unicode_ci DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+
+
 -- --------------------------------------------------------
 
 --
@@ -965,7 +967,13 @@ ALTER TABLE `users`
 --
 ALTER TABLE `utilisateurs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=501;
-
+  
+  
+--
+-- AUTO_INCREMENT pour la table `utilisateurs`
+--
+ALTER TABLE `stades` ADD PRIMARY KEY(`id`);
+ALTER TABLE `stades` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT;
 --
 -- Contraintes pour les tables déchargées
 --

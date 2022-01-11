@@ -65,8 +65,9 @@ Class Rencontres_model extends CI_Model
 				s.id stade_id, s.nom stade_nom
 			FROM '. TABLE_RENCONTRES .' r 
 			JOIN '. TABLE_EQUIPES .' eq1 ON eq1.id = r.equipe_id1 
-			JOIN '. TABLE_EQUIPES .' eq2 ON eq2.id = r.equipe_id2 WHERE r.id = '.$id.' 
-			LEFT JOIN '. TABLE_STADES .' ON s.id = r.id_stade;');
+			JOIN '. TABLE_EQUIPES .' eq2 ON eq2.id = r.equipe_id2 
+			LEFT JOIN '. TABLE_STADES .' s ON s.id = r.id_stade 
+			 WHERE r.id = '.$id.';');
 		$row = $query->row();
 		if (isset($row)) {
 			return $row;

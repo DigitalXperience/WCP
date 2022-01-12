@@ -96,6 +96,8 @@ Class Rencontres_model extends CI_Model
 		
 		$params = $this->admin_config->get();
 		//echo "<pre>"; var_dump($params); die;
+		// J'initialise le tableau joueurs ayant eu des modifications positive sur leurs pronostics
+		$joueurs = array(); $flag = null;
 		
 		if($pronos = $this->pronosctics->getAllPronosRencontre($id)) {
 			foreach($pronos as $pro) {
@@ -123,6 +125,7 @@ Class Rencontres_model extends CI_Model
 					} else {
 						
 					}
+					
 				}
 				
 				if($pro->score_min) { // Il a pronostiqué l'intervalle de la minute d'ouverture du score
@@ -134,7 +137,41 @@ Class Rencontres_model extends CI_Model
 						
 					}
 				}
+				
+				if($pts > 0) 
+					$joueurs[] = $pro->utilisateur_id;
 			}
+			//echo "<pre>";
+			//var_dump($joueurs);
+			// Attribution des points Bonus
+			if($joueurs) {
+				
+				$idC = $this->getIdCompetition($id);
+				foreach($joueurs as $joueur) {
+					
+					$jeux = $this->pronosctics->getLastThreePronoPoints($joueur, $idC);
+					//var_dump($jeux);
+					if($jeux) { // S'il a au moins 1 pronostic
+						
+						if(count($jeux) == 3) { // S'il a déjà 3 pronosctiques, on va vérifier ceux qui n'ont pas encore reçu de bonus
+							$nbbonus = 0;
+							foreach($jeux as $jeu) {
+								if($jeu->bonus_obtenus) {
+									$nbbonus = $nbbonus + 1;
+								}
+							}
+							$tmpArr = array_values($jeux);
+							$p = array_shift($tmpArr);
+							if($nbbonus == 0) {
+								$this->pronosctics->addBonus($p->pid, 3);
+							}
+						}							
+					}
+					 //var_dump($jeu);
+					
+				}
+			}
+			//die;
 			return true;
 		} else {
 			return true;

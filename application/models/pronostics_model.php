@@ -71,6 +71,27 @@ Class Pronostics_model extends CI_Model
 		return $this->db->count_all_results();
 	}
 	
+	public function getLastThreePronoPoints($idUser, $idContest) {
+		$sql = 'SELECT r.id_competition, r.id, r.date_heure, pr.pts_obtenus, pr.bonus_obtenus, pr.id as pid   
+					FROM '. TABLE_PRONOSTICS .' pr 
+					LEFT JOIN '. TABLE_RENCONTRES .' r ON r.id = pr.rencontre_id 
+					WHERE r.id_competition = ' . $idContest . ' AND pr.utilisateur_id = ' . $idUser . ' AND pr.pts_obtenus is not null AND pr.pts_obtenus > 0  
+					ORDER BY r.id DESC 
+					LIMIT 3;';
+			//var_dump($sql);		
+		$query = $this->db->query($sql);
+		$row = $query->result();
+		if (isset($row))
+		{
+			return $row;
+		}
+	}
+	
+	public function addBonus($idP, $pts) {
+		$this->db->where('id', $idP);
+		return $this->db->update(TABLE_PRONOSTICS, array('bonus_obtenus' => $pts));
+	}
+	
 	public function countPronostiqueurs() {
 		return $this->db->count_all(TABLE_UTILISATEURS);
 	}

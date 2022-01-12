@@ -210,6 +210,17 @@ Class Rencontres_model extends CI_Model
 		$sql = "";
 	}
 	
+	private function getIdCompetition($idR) {
+		$query = $this->db->query('SELECT id_competition 
+									FROM '. TABLE_RENCONTRES .' 
+									WHERE id = '. $idR);
+		
+		$row = $query->row();
+		if (isset($row)) {
+			return $row->id_competition;
+		}
+	}
+	
 	public function mis_en_avant($id) {
 		$query = $this->db->query('
 			UPDATE '. TABLE_RENCONTRES .' SET `en_avant` = CASE
